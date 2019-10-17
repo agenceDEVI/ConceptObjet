@@ -15,6 +15,16 @@ public class Case {
 		this.y = y;
 	}
 	
+	public Case(int x, int y, CaseType caseType) {
+		this.caseType = caseType;
+		this.x = x;
+		this.y = y;
+	}
+	
+	public int getX() {
+		return x;
+	}
+
 	public Entity getEntity() {
 		return entity;
 	}
@@ -27,6 +37,28 @@ public class Case {
             return entity==null;
         
         }
+	
+	public void displayCase() {
+		switch (caseType) {
+		case WASTELAND:
+			System.out.print(" ⭙ ");
+			break;
+		case ELVE:
+			System.out.print(" ➳ ");
+			break;
+		case HUMAN:
+			System.out.print(" ⛑ ");
+			break;
+		case GOBLIN:
+			System.out.print(" ☭ ");
+			break;
+		case ORC:
+			System.out.print(" ☠ ");
+			break;
+		default:
+			break;
+		}
+	}
 	
 	@Override
 	public String toString() {

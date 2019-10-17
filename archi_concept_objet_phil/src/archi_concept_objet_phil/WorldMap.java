@@ -16,7 +16,23 @@ public class WorldMap {
 		
 		for(int i = 0; i < Rules.worldMap_maxX; i++) {
 			for(int j = 0; j < Rules.worldMap_maxY; j++) {
-				worldMap[i][j] = new Case(i,j);
+				if(i<Rules.worldMap_sizeSafeZone && j<Rules.worldMap_sizeSafeZone) {
+					worldMap[i][j]=new Case(i,j,CaseType.HUMAN);
+				}
+				else if (i<Rules.worldMap_sizeSafeZone && j>(Rules.worldMap_maxX-(1+Rules.worldMap_sizeSafeZone))) {
+					worldMap[i][j]=new Case(i,j,CaseType.ELVE);
+				}
+				else if (i>(Rules.worldMap_maxY-(1+Rules.worldMap_sizeSafeZone)) && j<Rules.worldMap_sizeSafeZone) {
+					worldMap[i][j]=new Case(i,j,CaseType.GOBLIN);
+				}
+				else if (i>(Rules.worldMap_maxY-(1+Rules.worldMap_sizeSafeZone)) && j>(Rules.worldMap_maxX-(1+Rules.worldMap_sizeSafeZone))) {
+					worldMap[i][j]=new Case(i,j,CaseType.ORC);
+				}
+				
+				else {
+					worldMap[i][j]=new Case(i,j,CaseType.WASTELAND);
+				}
+				//worldMap[i][j] = new Case(i,j);
 				worldMapList.add(worldMap[i][j]);
 			}
 		}
@@ -42,5 +58,18 @@ public class WorldMap {
             return worldMap[x][y];
         
         }
+	
+	public void displayWorldMap() {
+		System.out.println("Affichage de la carte:");
+		int posX = worldMapList.get(0).getX();
+		for (Case mapCase : worldMapList) {
+			if(mapCase.getX()!=posX) {
+				System.out.println();
+				posX+=1;
+			}
+			mapCase.displayCase();
+		}
+		System.out.println();
+	}
 	
 }
