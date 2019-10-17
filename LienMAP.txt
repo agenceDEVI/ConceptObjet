@@ -6,3 +6,10 @@ Tableau 2 entrées
 
 http://imss-www.upmf-grenoble.fr/prevert/Prog/Java/CoursJava/tableaux.html
 Tableaux 2 entrées
+
+http://jo.lef.free.fr/java/echecs/rapport.pdf
+Deplacement ?
+
+https://openclassrooms.com/forum/sujet/algorithme-de-deplacement-case-par-case-78275
+Déplacement
+
