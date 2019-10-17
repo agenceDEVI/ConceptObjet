@@ -37,5 +37,10 @@ public class WorldMap {
 		//waw
 		return true;
 	}
+        
+        public Case getCase(int x,int y){
+            return worldMap[x][y];
+        
+        }
 	
 }

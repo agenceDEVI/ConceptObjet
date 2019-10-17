@@ -22,6 +22,11 @@ public class Case {
 	public void setCaseType(CaseType type) {
 		caseType = type;
 	}
+        
+        public boolean canMove(){
+            return entity==null;
+        
+        }
 	
 	@Override
 	public String toString() {
