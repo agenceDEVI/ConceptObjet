@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="archi_concept_objet_phil/src"/>
+	<classpathentry kind="src" path="la_communaute_de_l_anneau/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="archi_concept_objet_phil/bin"/>
+</classpath>
