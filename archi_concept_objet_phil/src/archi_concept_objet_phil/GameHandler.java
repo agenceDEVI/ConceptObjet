@@ -4,10 +4,13 @@ public class GameHandler {
 
 	public static void main(String[] args) {
             
-            while(!WorldMapService.getMap().isGameOver()){
-                WorldMapService.getMap().playOneTurn();
-                
-            }
+		WorldMap worldMap = new WorldMap();
+		worldMap.displayWorldMap();
+		System.out.println();
+		worldMap.checkingCase(4, 4);
+		while(!worldMap.isGameOver()){
+			worldMap.playOneTurn();
+		}
             
 	
 	}

@@ -5,5 +5,6 @@ public enum CaseType {
 	ORC,
 	HUMAN,
 	ELVE,
-	GOBLIN
+	GOBLIN,
+	OBSTACLE
 }

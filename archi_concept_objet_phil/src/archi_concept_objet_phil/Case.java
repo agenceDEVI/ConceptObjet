@@ -24,6 +24,10 @@ public class Case {
 	public int getX() {
 		return x;
 	}
+	
+	public int getY() {
+		return y;
+	}
 
 	public Entity getEntity() {
 		return entity;
@@ -33,10 +37,9 @@ public class Case {
 		caseType = type;
 	}
         
-        public boolean canMove(){
-            return entity==null;
-        
-        }
+	public boolean canMove(){
+		return entity==null;
+	}
 	
 	public void displayCase() {
 		switch (caseType) {
@@ -53,8 +56,10 @@ public class Case {
 			System.out.print(" ☭ ");
 			break;
 		case ORC:
-			System.out.print(" ☠ ");
+			System.out.print(" ☠  ");
 			break;
+		case OBSTACLE:
+			System.out.print(" W");
 		default:
 			break;
 		}
@@ -62,6 +67,8 @@ public class Case {
 	
 	@Override
 	public String toString() {
-		return "Coord x:"+x+"; Coord y:"+y;
+		return "Coord x:"+this.getX()+"; Coord y:"+this.getY();
 	}
+	
+	
 }

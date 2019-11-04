@@ -1,6 +1,7 @@
 package archi_concept_objet_phil;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class WorldMap {
 	
@@ -13,6 +14,7 @@ public class WorldMap {
 		
 		worldMap = new Case[Rules.worldMap_maxX][Rules.worldMap_maxY];
 		worldMapList = new ArrayList<Case>();
+		Random rand = new Random();
 		
 		for(int i = 0; i < Rules.worldMap_maxX; i++) {
 			for(int j = 0; j < Rules.worldMap_maxY; j++) {
@@ -30,7 +32,14 @@ public class WorldMap {
 				}
 				
 				else {
-					worldMap[i][j]=new Case(i,j,CaseType.WASTELAND);
+					
+					if(rand.nextInt(20)==10) {
+						worldMap[i][j]=new Case(i,j,CaseType.OBSTACLE);
+					}
+					else {
+						worldMap[i][j]=new Case(i,j,CaseType.WASTELAND);
+					}
+					
 				}
 				//worldMap[i][j] = new Case(i,j);
 				worldMapList.add(worldMap[i][j]);
@@ -70,6 +79,19 @@ public class WorldMap {
 			mapCase.displayCase();
 		}
 		System.out.println();
+	} 
+	
+	public void checkingCase(int a, int b) {
+		for (int i = -1; i < 2; i++) {
+			for (int j = -1; j < 2; j++) {
+				if (i!=0 || j!=0) {
+					this.getCase(a+i, b+j).displayCase();
+					System.out.println(this.getCase(a+i, b+j).toString());
+				}
+			}
+		}
 	}
+	
+	
 	
 }
