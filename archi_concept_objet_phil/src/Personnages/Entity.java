@@ -1,6 +1,18 @@
-package archi_concept_objet_phil;
+package Personnages;
+
+import archi_concept_objet_phil.WorldMapService;
 
 public abstract class Entity {
+	
+	protected int PE;
+	protected int PV;
+	protected int XP;
+	
+	protected int nbrPopulationAlliance;
+	protected static boolean alliance;
+	
+	public abstract void initPV_PE();
+	public abstract void attaque();
 	
 	public boolean play(){
             

@@ -3,6 +3,8 @@ package archi_concept_objet_phil;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Personnages.Entity;
+
 public class WorldMap {
 	
 	private ArrayList<Entity> entities;
