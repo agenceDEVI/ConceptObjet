@@ -1,8 +1,16 @@
 package Personnages;
 
+import archi_concept_objet_phil.Rules;
+
 public class Elfe extends Entity {
 
 	private static int nbElfe;
+	
+	public Elfe() {
+		this.PV = Rules.elfe_PV_Max;
+		this.PE = Rules.elfe_PE_Max;
+		this.XP = 0;
+	}
 	
 	@Override
 	public void initPV_PE() {
@@ -11,8 +19,8 @@ public class Elfe extends Entity {
 	}
 
 	@Override
-	public void attaque() {
-		// TODO Auto-generated method stub
+	public void attaque(Entity ennemi) {
+		ennemi.PV = ennemi.PV - 3;
 
 	}
 

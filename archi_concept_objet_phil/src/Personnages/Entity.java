@@ -12,8 +12,14 @@ public abstract class Entity {
 	protected static boolean alliance;
 	
 	public abstract void initPV_PE();
-	public abstract void attaque();
+	public abstract void attaque(Entity ennemi);
 	
+	/**
+	 * @return the pV
+	 */
+	public int getPV() {
+		return PV;
+	}
 	public boolean play(){
             
             return WorldMapService.getMap().getCase(2,2).canMove();
