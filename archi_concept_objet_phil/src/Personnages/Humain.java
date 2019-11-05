@@ -10,6 +10,7 @@ public class Humain extends Entity {
 		this.PV = Rules.humain_PV_Max;
 		this.PE = Rules.humain_PE_Max;
 		this.XP = 0;
+		nbHumain++;
 	}
 	@Override
 	public void initPV_PE() { 
@@ -20,5 +21,7 @@ public class Humain extends Entity {
 	public void attaque(Entity ennemi) {
 		ennemi.PV = ennemi.PV - 4;
 	}
+	
+	
 	
 }

@@ -10,6 +10,7 @@ public class Orc extends Entity {
 		this.PV = Rules.orc_PV_Max;
 		this.PE = Rules.orc_PE_Max;
 		this.XP = 0;
+		nbOrc++;
 	}
 	
 	@Override

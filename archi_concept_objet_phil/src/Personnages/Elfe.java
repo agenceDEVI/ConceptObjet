@@ -10,6 +10,7 @@ public class Elfe extends Entity {
 		this.PV = Rules.elfe_PV_Max;
 		this.PE = Rules.elfe_PE_Max;
 		this.XP = 0;
+		nbElfe++;
 	}
 	
 	@Override
@@ -21,7 +22,6 @@ public class Elfe extends Entity {
 	@Override
 	public void attaque(Entity ennemi) {
 		ennemi.PV = ennemi.PV - 3;
-
 	}
 
 }

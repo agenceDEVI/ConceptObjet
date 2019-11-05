@@ -1,5 +1,7 @@
 package archi_concept_objet_phil;
 
+import Personnages.Entity;
+
 public class GameManager {
 
 	private String derniereDirection;

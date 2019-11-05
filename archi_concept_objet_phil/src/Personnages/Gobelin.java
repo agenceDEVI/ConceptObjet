@@ -10,6 +10,7 @@ public class Gobelin extends Entity {
 		this.PV = Rules.gobelin_PV_Max;
 		this.PE = Rules.gobelin_PE_Max;
 		this.XP = 0;
+		nbGoblelin++;
 	}
 	
 	@Override
@@ -21,6 +22,13 @@ public class Gobelin extends Entity {
 	@Override
 	public void attaque(Entity ennemi) {
 		ennemi.PV = ennemi.PV - 2;
+	}
+
+	/**
+	 * @return the nbGoblelin
+	 */
+	public static int getNbGoblelin() {
+		return nbGoblelin;
 	}
 
 }

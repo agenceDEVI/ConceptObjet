@@ -32,7 +32,6 @@ public class WorldMap {
 				else if (i>(Rules.worldMap_maxY-(1+Rules.worldMap_sizeSafeZone)) && j>(Rules.worldMap_maxX-(1+Rules.worldMap_sizeSafeZone))) {
 					worldMap[i][j]=new Case(i,j,CaseType.ORC);
 				}
-				
 				else {
 					
 					if(rand.nextInt(20)==10) {

@@ -30,6 +30,15 @@ public abstract class Entity {
         // Verifier si on peut bien se deplacer : 
         
         
-        
+	/**
+	 * @return the alliance
+	 */
+	public static boolean isAlliance() {
+		return alliance;
+	}
+	
+	public void deplacement() {
+		
+	}
         
 }
