@@ -1,8 +1,11 @@
 package Personnages;
 
+import java.util.Random;
+
 import archi_concept_objet_phil.Case;
 import archi_concept_objet_phil.CaseType;
 import archi_concept_objet_phil.Direction;
+import archi_concept_objet_phil.Rules;
 import archi_concept_objet_phil.WorldMapService;
 
 public abstract class Entity {
@@ -17,6 +20,8 @@ public abstract class Entity {
 	
 	public abstract void initPV_PE();
 	public abstract void attaque(Entity ennemi);
+	
+	Random rand = new Random();
 	
 	/**
 	 * @return the pV
@@ -39,6 +44,42 @@ public abstract class Entity {
 	 */
 	public static boolean isAlliance() {
 		return alliance;
+	}
+	
+	public void chooseDirection() {
+		if(currentCase.getX()==0) {
+			if (currentCase.getY()==0) {
+				
+			}
+			else if (currentCase.getY()==Rules.worldMap_maxY) {
+				
+			}
+			else {
+				
+			}
+		}
+		else if (currentCase.getX()==Rules.worldMap_maxX) {
+			if (currentCase.getY()==0) {
+				
+			}
+			else if (currentCase.getY()==Rules.worldMap_maxY) {
+				
+			}
+			else {
+				
+			}
+		}
+		else {
+			if (currentCase.getY()==0) {
+				
+			}
+			else if (currentCase.getY()==Rules.worldMap_maxY) {
+				
+			}
+			else {
+				
+			}
+		}
 	}
 	
 	public void checkingDirection(Direction direction) {
@@ -238,19 +279,23 @@ public abstract class Entity {
 			this.setPE(this.getPE()-1);
 		}
 	}
-	public void fight(Entity entity){
-		while(this.getPV() > 0 || entity.getPV() >0 ){
-			this.attack();
-			entity.attack();
-		}
-		if(this.getPV() <= 0 ){
-			WorldMapService.getMap().death(this);
-		}
-		else{
-			WorldMapService.getMap().death(entity);
-		}
-	}
 
-	public void attack() {};
+	public void fight(Entity entity){
+        while(this.getPV() > 0 || entity.getPV() >0 ){
+            int damage = this.attack(entity);
+            entity.attack(this);
+
+        }
+        if(this.getPV() <= 0 ){
+            WorldMapService.getMap().death(this);
+            entity.setXP(entity.getXP() + this.getXP());
+        }
+        else{
+            WorldMapService.getMap().death(entity);
+            entity.setXP(entity.getXP() + this.getXP());
+        }
+    }
+	
+	public abstract void attack(Entity entitie);
 
 }

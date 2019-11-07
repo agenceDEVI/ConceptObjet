@@ -117,22 +117,30 @@ public class WorldMap {
 				switch (worldMap[i][j].getCaseType()) {
 				case HUMAN:
 					if (rand.nextInt(8)==2) {
-						worldMap[i][j].setEntity(new Humain());
+						Humain humain = new Humain();
+						worldMap[i][j].setEntity(humain);
+						entities.add(humain);
 					}
 					break;
 				case ELVE:
 					if (rand.nextInt(8)==3) {
-						worldMap[i][j].setEntity(new Elfe());
-					}
+						Elfe elfe = new Elfe();
+						worldMap[i][j].setEntity(elfe);
+						entities.add(elfe);
+						}
 					break;
 				case ORC:
 					if (rand.nextInt(8)==4) {
-						worldMap[i][j].setEntity(new Orc());
+						Orc orc = new Orc();
+						worldMap[i][j].setEntity(orc);
+						entities.add(orc);
 					}
 					break;
 				case GOBLIN:
 					if (rand.nextInt(8)==5) {
-						worldMap[i][j].setEntity(new Gobelin());
+						Gobelin gobelin = new Gobelin();
+						worldMap[i][j].setEntity(gobelin);
+						entities.add(gobelin);
 					}
 					break;
 				default:
@@ -142,6 +150,12 @@ public class WorldMap {
 		}
 	}
 	
-
+	public void death(Entity entity){
+		for(Entity i : entities ){
+			if(i == entity){
+				entities.remove(i);
+			}
+		}
+	}
 	
 }

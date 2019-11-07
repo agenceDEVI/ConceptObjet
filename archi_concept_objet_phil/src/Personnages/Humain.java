@@ -29,6 +29,12 @@ public class Humain extends Entity {
 	public String toString() {
 		return " H";
 	}
+	@Override
+	public void attack(Entity entity){
+        System.out.println("Met un coup d’épée");
+        int damage = this.XP;
+        entity.setPV(entity.getPV() - damage);
+    }
 	
 	
 	

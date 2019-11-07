@@ -32,4 +32,11 @@ public class Orc extends Entity {
 		return " O";
 	}
 
+	@Override
+	public void attack(Entity entity){
+        System.out.println("Met un coup avec sa hache");
+        int damage = this.XP;
+        entity.setPV(entity.getPV() - damage);
+    }
+
 }

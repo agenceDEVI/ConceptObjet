@@ -32,4 +32,11 @@ public class Elfe extends Entity {
 		return " E";
 	}
 
+	@Override
+	public void attack(Entity entity){
+        System.out.println("Touche sa cible avec sa flèche");
+        int damage = this.XP;
+        entity.setPV(entity.getPV() - damage);
+    }
+
 }

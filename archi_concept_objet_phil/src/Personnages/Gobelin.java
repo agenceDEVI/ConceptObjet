@@ -39,4 +39,11 @@ public class Gobelin extends Entity {
 		return " G";
 	}
 
+	@Override
+	public void attack(Entity entity){
+        System.out.println("Met un coup de lance");
+        int damage = this.XP;
+        entity.setPV(entity.getPV() - damage);
+    }
+
 }
