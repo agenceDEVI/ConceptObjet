@@ -30,5 +30,13 @@ public class Gobelin extends Entity {
 	public static int getNbGoblelin() {
 		return nbGoblelin;
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return " G";
+	}
 
 }

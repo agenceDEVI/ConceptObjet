@@ -23,5 +23,13 @@ public class Elfe extends Entity {
 	public void attaque(Entity ennemi) {
 		ennemi.PV = ennemi.PV - 3;
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return " E";
+	}
 
 }

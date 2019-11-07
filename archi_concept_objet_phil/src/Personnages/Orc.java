@@ -23,5 +23,13 @@ public class Orc extends Entity {
 	public void attaque(Entity ennemi) {
 		ennemi.PV = ennemi.PV - 4;
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return " O";
+	}
 
 }

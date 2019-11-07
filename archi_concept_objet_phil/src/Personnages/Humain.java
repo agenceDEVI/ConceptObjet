@@ -22,6 +22,14 @@ public class Humain extends Entity {
 		ennemi.PV = ennemi.PV - 4;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return " H";
+	}
+	
 	
 	
 }
