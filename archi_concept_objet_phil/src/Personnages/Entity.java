@@ -141,36 +141,45 @@ public abstract class Entity extends EntitySuperClass {
 	}
 	
 	public void chooseDirection() {
-		if(currentCase.getX()==0) {
-			if (currentCase.getY()==0) {
+		if(currentCase.getY()==0) {
+			if (currentCase.getX()==0) {
+				System.out.println("humanCorner");
 				checkingDirection(humanCorner());
 			}
-			else if (currentCase.getY()==Rules.worldMap_maxY) {
+			else if (currentCase.getY()==Rules.worldMap_maxX) {
+				System.out.println("orcCorner");
 				checkingDirection(orcCorner());
 			}
 			else {
+				System.out.println("westLimit");
 				checkingDirection(westLimit());
 			}
 		}
-		else if (currentCase.getX()==Rules.worldMap_maxX) {
-			if (currentCase.getY()==0) {
+		else if (currentCase.getY()==Rules.worldMap_maxY) {
+			if (currentCase.getX()==0) {
+				System.out.println("elveCorner");
 				checkingDirection(elveCorner());
 			}
-			else if (currentCase.getY()==Rules.worldMap_maxY) {
+			else if (currentCase.getX()==Rules.worldMap_maxX) {
+				System.out.println("goblinCorner");
 				checkingDirection(goblinCorner());
 			}
 			else {
+				System.out.println("eastLimit");
 				checkingDirection(eastLimit());
 			}
 		}
 		else {
-			if (currentCase.getY()==0) {
+			if (currentCase.getX()==0) {
+				System.out.println("northLimit");
 				checkingDirection(northLimit());
 			}
-			else if (currentCase.getY()==Rules.worldMap_maxY) {
+			else if (currentCase.getX()==Rules.worldMap_maxX) {
+				System.out.println("southLimit");
 				checkingDirection(southLimit());
 			}
 			else {
+				System.out.println("center");
 				checkingDirection(center());
 			}
 		}
@@ -180,6 +189,7 @@ public abstract class Entity extends EntitySuperClass {
 		System.out.println(direction);
 		switch (direction) {
 		case HAUT:
+			System.out.println("HAUT");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()-1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()-1).getEntity()!=null) {
 					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()-1).getEntity(),currentCase.getX(), currentCase.getY()-1);
@@ -188,6 +198,7 @@ public abstract class Entity extends EntitySuperClass {
 			}
 			break;
 		case HAUTGAUCHE:
+			System.out.println("HAUTGAUCHE");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY()-1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity()!=null) {
 					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity(),currentCase.getX()-1,currentCase.getY()-1);
@@ -196,6 +207,7 @@ public abstract class Entity extends EntitySuperClass {
 			}
 			break;
 		case GAUCHE:
+			System.out.println("GAUCHE");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY())) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()).getEntity()!=null) {
 					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()).getEntity(),currentCase.getX()-1,currentCase.getY());
@@ -204,6 +216,7 @@ public abstract class Entity extends EntitySuperClass {
 			}
 			break;
 		case BASGAUCHE:
+			System.out.println("BASGAUCHE");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY()+1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity()!=null) {
 					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity(),currentCase.getX()-1,currentCase.getY()+1);
@@ -212,6 +225,7 @@ public abstract class Entity extends EntitySuperClass {
 			}
 			break;
 		case BAS:
+			System.out.println("BAS");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()+1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()+1).getEntity()!=null) {
 					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()+1).getEntity(),currentCase.getX(),currentCase.getY()+1);
@@ -220,6 +234,7 @@ public abstract class Entity extends EntitySuperClass {
 			}
 			break;
 		case BASDROITE:
+			System.out.println("BASDROITE");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY()+1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity()!=null) {
 					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity(),currentCase.getX()+1,currentCase.getY()+1);
@@ -228,6 +243,7 @@ public abstract class Entity extends EntitySuperClass {
 			}
 			break;
 		case DROITE:
+			System.out.println("DROITE");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY())) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()).getEntity()!=null) {
 					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()).getEntity(),currentCase.getX()+1,currentCase.getY());
@@ -236,6 +252,7 @@ public abstract class Entity extends EntitySuperClass {
 			}
 			break;
 		case HAUTDROITE:
+			System.out.println("HAUTDROITE");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY()-1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity()!=null) {
 					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity(),currentCase.getX()+1,currentCase.getY()-1);

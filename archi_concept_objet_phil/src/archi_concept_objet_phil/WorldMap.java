@@ -69,8 +69,8 @@ public class WorldMap {
 			}
 		}*/
 		
-		for (int i = 0; i < Rules.worldMap_maxX; i++) {
-			for (int j = 0; j < Rules.worldMap_maxY; j++) {
+		for (int i = 0; i < Rules.worldMap_maxY; i++) {
+			for (int j = 0; j < Rules.worldMap_maxX; j++) {
 				
 				if(worldMap[i][j].getEntity()==null) {
 					worldMap[i][j].displayCase();
