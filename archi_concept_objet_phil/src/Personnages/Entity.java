@@ -410,6 +410,18 @@ public abstract class Entity extends EntitySuperClass {
         }
     }
 	
+	/**
+	 * @return the currentCase
+	 */
+	public Case getCurrentCase() {
+		return currentCase;
+	}
+	/**
+	 * @param currentCase the currentCase to set
+	 */
+	public void setCurrentCase(Case currentCase) {
+		this.currentCase = currentCase;
+	}
 	public abstract void attack(Entity entitie);
 	public String getRace() {
 		return race;

@@ -20,10 +20,11 @@ public class GameManager {
 		worldMap.positionnementEntity();
 		int compteurTour = 0;
 		while( ((Humain.getNbHumain()+Elfe.getNbElfe()) > 0 && (Orc.getNbOrc()+Gobelin.getNbGoblelin()) > 0) || compteurTour <1000){
-			for(int i=0;i<worldMap.entities.size();i++/*Entity e : worldMap.entities*/){
-				worldMap.entities.get(i).chooseDirection();
+			for(int i=0;i<worldMap.getEntities().size();i++/*Entity e : worldMap.entities*/){
 				WorldMapService.getMap().displayWorldMap();
-				System.out.println("nouveau tour");
+				worldMap.getEntities().get(i).chooseDirection();
+				compteurTour++;
+				System.out.println("nouveau tour"+compteurTour);
 				//TimeUnit.SECONDS.sleep(2);
 			}
 		}

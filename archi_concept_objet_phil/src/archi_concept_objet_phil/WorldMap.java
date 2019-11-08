@@ -19,13 +19,14 @@ public class WorldMap {
 	
 	private Case[][] worldMap;
 	private ArrayList<Case> worldMapList;
+	private int nbEntities;
 	
 	public WorldMap() {
 		
 		worldMap = new Case[Rules.worldMap_maxX][Rules.worldMap_maxY];
 		worldMapList = new ArrayList<Case>();
 		generation();
-		positionnementEntity();
+		//positionnementEntity();
 		for(int i = 0; i < Rules.worldMap_maxX; i++) {
 			for(int j = 0; j < Rules.worldMap_maxY; j++) {
 				worldMapList.add(worldMap[i][j]);
@@ -126,22 +127,16 @@ public class WorldMap {
 	}
 	
 	public void positionnementEntity() {
-		worldMap[0][0].setEntity(new Humain(worldMap[0][0]));
-		entities.add(worldMap[0][0].getEntity());
-		worldMap[0][1].setEntity(new Elfe(worldMap[0][1]));
-		entities.add(worldMap[0][0].getEntity());
-		worldMap[1][0].setEntity(new Gobelin(worldMap[1][0]));
-		entities.add(worldMap[0][0].getEntity());
-		worldMap[1][1].setEntity(new Orc(worldMap[1][1]));
-		entities.add(worldMap[0][0].getEntity());
-		for(int i = 0; i < Rules.worldMap_maxX; i++) {
-			for(int j = 0; j < Rules.worldMap_maxY; j++) {
+		nbEntities=0;
+		for(int i = 0; i < Rules.worldMap_maxX-1; i++) {
+			for(int j = 0; j < Rules.worldMap_maxY-1; j++) {
 				switch (worldMap[i][j].getCaseType()) {
 				case HUMAN:
 					if (rand.nextInt(6)==1) {
 						Humain humain = new Humain(worldMap[i][j]);
 						worldMap[i][j].setEntity(humain);
 						entities.add(humain);
+						nbEntities++;
 					}
 					break;
 				case ELVE:
@@ -149,6 +144,7 @@ public class WorldMap {
 						Elfe elfe = new Elfe(worldMap[i][j]);
 						worldMap[i][j].setEntity(elfe);
 						entities.add(elfe);
+						nbEntities++;
 						}
 					break;
 				case ORC:
@@ -156,6 +152,7 @@ public class WorldMap {
 						Orc orc = new Orc(worldMap[i][j]);
 						worldMap[i][j].setEntity(orc);
 						entities.add(orc);
+						nbEntities++;
 					}
 					break;
 				case GOBLIN:
@@ -163,6 +160,7 @@ public class WorldMap {
 						Gobelin gobelin = new Gobelin(worldMap[i][j]);
 						worldMap[i][j].setEntity(gobelin);
 						entities.add(gobelin);
+						nbEntities++;
 					}
 					break;
 				default:
@@ -173,11 +171,25 @@ public class WorldMap {
 		
 	}
 	
+	/**
+	 * @return the entities
+	 */
+	public ArrayList<Entity> getEntities() {
+		return entities;
+	}
+
+	/**
+	 * @param entities the entities to set
+	 */
+	public void setEntities(ArrayList<Entity> entities) {
+		this.entities = entities;
+	}
+
 	public void death(Entity entity){
 		System.out.println("death : ");
         for(int i=0; i<entities.size();i++){
             if(entities.get(i) == entity){
-                entities.remove(i);
+            	worldMap[entities.get(i).getCurrentCase().getX()][entities.get(i).getCurrentCase().getY()].setEntity(null);
                 if(entities.get(i).getClass().getSimpleName().toString() == "humain"){
                     Humain.setNbHumain(Humain.getNbHumain()-1);
                 }
@@ -190,6 +202,7 @@ public class WorldMap {
                 if(entities.get(i).getClass().getSimpleName().toString() == "gobelin"){
                     Gobelin.setNbGoblelin(Gobelin.getNbGoblelin()-1);
                 }
+                entities.remove(i);
             }
         }
     }
