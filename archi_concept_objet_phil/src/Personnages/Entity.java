@@ -16,6 +16,7 @@ public abstract class Entity extends EntitySuperClass {
 	protected Case currentCase;
 	
 	protected int nbrPopulationAlliance;
+	protected int nbrPopulationAdverse;
 	protected static boolean alliance;
 	
 	public abstract void initPV_PE();
@@ -396,7 +397,7 @@ public abstract class Entity extends EntitySuperClass {
 
 	public void fight(Entity entity){
         while(this.getPV() > 0 || entity.getPV() >0 ){
-            //int damage = this.attack(entity);
+            this.attack(entity);
             entity.attack(this);
 
         }

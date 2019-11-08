@@ -13,7 +13,7 @@ public class WorldMap {
 	
 	Random rand = new Random();
 	
-	private ArrayList<Entity> entities = new ArrayList<Entity>();
+	public ArrayList<Entity> entities = new ArrayList<Entity>();
 	
 	private Case[][] worldMap;
 	private ArrayList<Case> worldMapList;
