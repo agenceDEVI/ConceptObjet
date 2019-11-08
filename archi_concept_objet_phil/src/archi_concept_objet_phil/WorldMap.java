@@ -191,17 +191,20 @@ public class WorldMap {
         for(int i=0; i<entities.size();i++){
             if(entities.get(i) == entity){
             	worldMap[entities.get(i).getCurrentCase().getX()][entities.get(i).getCurrentCase().getY()].setEntity(null);
-                if(entities.get(i).getClass().getSimpleName().toString() == "humain"){
-                    Humain.setNbHumain(Humain.getNbHumain()-1);
-                }
-                if(entities.get(i).getClass().getSimpleName().toString() == "elfe"){
+            	switch (entities.get(i).getClass().getSimpleName()){
+				case "Humain":
+                	Humain.setNbHumain(Humain.getNbHumain()-1);
+                	break;
+                
+            	case "Elfe":
                     Elfe.setNbElfe(Elfe.getNbElfe()-1);
-                }
-                if(entities.get(i).getClass().getSimpleName().toString() == "orc"){
+                    break;
+            	case "Orc":
                     Orc.setNbOrc(Orc.getNbOrc()-1);
-                }
-                if(entities.get(i).getClass().getSimpleName().toString() == "gobelin"){
+                    break;
+            	case "Gobelin":
                     Gobelin.setNbGoblelin(Gobelin.getNbGoblelin()-1);
+                	break;
                 }
                 entities.remove(i);
             }

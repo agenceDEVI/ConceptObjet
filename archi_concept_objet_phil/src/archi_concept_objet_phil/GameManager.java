@@ -17,11 +17,9 @@ public class GameManager {
 	public void deroulementPartie() {//throws InterruptedException{
 		worldMap.positionnementEntity();
 		int compteurTour = 0;
-		
-		while( ((Humain.getNbHumain()+Elfe.getNbElfe()) > 0 && (Orc.getNbOrc()+Gobelin.getNbGoblelin()) > 0) && compteurTour <500){
+		while( Humain.getNbHumain()+Elfe.getNbElfe() > 0 && Orc.getNbOrc()+Gobelin.getNbGoblelin() > 0 && compteurTour <1000 ){
 			System.out.println(worldMap.getNbEntities());
-			System.out.println("nbhulain"+Humain.getNbHumain());
-			System.out.println("nbgobelin"+Gobelin.getNbGoblelin());
+			
 			for(int i=0;i<worldMap.getNbEntities();i++/*Entity e : worldMap.entities*/){
 					System.out.println("################################################################");
 					System.out.println("Nb Entité : "+worldMap.getNbEntities());
