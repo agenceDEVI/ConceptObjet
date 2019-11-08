@@ -5,6 +5,7 @@ import Personnages.Entity;
 import Personnages.Gobelin;
 import Personnages.Humain;
 import Personnages.Orc;
+import java.util.concurrent.TimeUnit;
 
 public class GameManager {
 	
@@ -15,12 +16,14 @@ public class GameManager {
 		this.worldMap = worldMap;
 	}
 	
-	public void deroulementPartie(){
+	public void deroulementPartie() {//throws InterruptedException{
 		worldMap.positionnementEntity();
 		int compteurTour = 0;
 		while( ((Humain.getNbHumain()+Elfe.getNbElfe()) > 0 && (Orc.getNbOrc()+Gobelin.getNbGoblelin()) > 0) || compteurTour <1000){
 			for(Entity e : worldMap.entities){
 				e.chooseDirection();
+				System.out.println("test");
+				//TimeUnit.SECONDS.sleep(2);
 			}
 		}
 		if(Humain.getNbHumain()+Elfe.getNbElfe() > 0){

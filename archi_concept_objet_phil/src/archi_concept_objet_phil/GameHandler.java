@@ -54,6 +54,7 @@ public class GameHandler {
 		System.out.println();
 		WorldMapService.getMap().displayWorldMap();
 		GameManager game = new GameManager(WorldMapService.getMap());
+		game.deroulementPartie();
 		//System.out.println("Nb PV humain :"+ worldMap.getCase(10, 10).getEntity().getPV());
 		
 		
