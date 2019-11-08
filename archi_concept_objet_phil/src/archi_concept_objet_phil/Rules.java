@@ -2,9 +2,9 @@ package archi_concept_objet_phil;
 
 public class Rules {
 	
-	public static final int worldMap_maxY = 11;
-	public static final int worldMap_maxX = 11;
-	public static final int worldMap_sizeSafeZone = 5;
+	public static final int worldMap_maxY = 10;
+	public static final int worldMap_maxX = 10;
+	public static final int worldMap_sizeSafeZone = 3;
 	
 	public static final int humain_PV_Max = 40;
 	public static final int elfe_PV_Max = 50;

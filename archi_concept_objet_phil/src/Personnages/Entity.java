@@ -399,7 +399,7 @@ public abstract class Entity extends EntitySuperClass {
 	public void fight(Entity attack,Entity defense){
         while(attack.getPV() > 0 && defense.getPV() >0 ){
             attack.attack(defense);
-            if(defense.getPV() <= 0){
+            if(defense.getPV() > 0){
             	defense.attack(attack);
             }
 

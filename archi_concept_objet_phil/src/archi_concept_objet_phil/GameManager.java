@@ -18,8 +18,9 @@ public class GameManager {
 		worldMap.positionnementEntity();
 		int compteurTour = 0;
 		
-		while( ((Humain.getNbHumain()+Elfe.getNbElfe()) > 0 && (Orc.getNbOrc()+Gobelin.getNbGoblelin()) > 0) || compteurTour <1000){
+		while( ((Humain.getNbHumain()+Elfe.getNbElfe()) > 0 && (Orc.getNbOrc()+Gobelin.getNbGoblelin()) > 0) && compteurTour <1000){
 			System.out.println(worldMap.getNbEntities());
+			System.out.println(Humain.getNbHumain()+Elfe.getNbElfe());
 			for(int i=0;i<worldMap.getNbEntities();i++/*Entity e : worldMap.entities*/){
 				System.out.println(worldMap.getNbEntities());
 					System.out.println(i);
