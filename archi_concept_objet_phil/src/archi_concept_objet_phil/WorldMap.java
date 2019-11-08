@@ -13,7 +13,7 @@ public class WorldMap {
 	
 	Random rand = new Random();
 	
-	private ArrayList<Entity> entities;
+	private ArrayList<Entity> entities = new ArrayList<Entity>();
 	
 	private Case[][] worldMap;
 	private ArrayList<Case> worldMapList;
@@ -111,15 +111,15 @@ public class WorldMap {
 	}
 	
 	public void positionnementEntity() {
-		worldMap[0][0].setEntity(new Humain());
+		worldMap[0][0].setEntity(new Humain(worldMap[0][0]));
+		entities.add(worldMap[0][0].getEntity());
 		for(int i = 0; i < Rules.worldMap_maxX; i++) {
 			for(int j = 0; j < Rules.worldMap_maxY; j++) {
 				switch (worldMap[i][j].getCaseType()) {
 				case HUMAN:
 					if (rand.nextInt(8)==2) {
-						Humain humain = new Humain();
+						Humain humain = new Humain(worldMap[i][j]);
 						worldMap[i][j].setEntity(humain);
-						System.out.println(worldMap[i][j].getEntity().toString());
 						entities.add(humain);
 					}
 					break;
@@ -171,4 +171,11 @@ public class WorldMap {
         }
     }
 	
+	public void move(int x, int y) {
+		System.out.println("je bouge");
+		Case nextCase = WorldMapService.getMap().getCase(x, y);
+		nextCase.setEntity(this);
+		currentCase.setEntity(null);
+		this.currentCase = nextCase;
+	}
 }

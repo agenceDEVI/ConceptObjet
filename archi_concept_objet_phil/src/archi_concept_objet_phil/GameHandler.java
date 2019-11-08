@@ -21,7 +21,7 @@ public class GameHandler {
 		
 		worldMap.checkingCase(4, 4);
 		System.out.println();
-		Orc orc = new Orc();
+		/*Orc orc = new Orc();
 		Humain humain = new Humain();
 		Gobelin gobelin = new Gobelin();
 		System.out.println("Nb PV Paul :"+ humain.getPV());
@@ -38,11 +38,14 @@ public class GameHandler {
 		System.out.println("Nb PV Thibault :"+ gobelin.getPV());
 		System.out.println();
 		System.out.println("Nb de gobelin :"+ Gobelin.getNbGoblelin());
-		System.out.println("Nb de gobelin :"+ Gobelin.getNbGoblelin());
+		System.out.println("Nb de gobelin :"+ Gobelin.getNbGoblelin());*/
 		System.out.println();
 		System.out.println(worldMap.getCase(0, 0).getEntity());
+		System.out.println("je veux");
+		worldMap.getCase(0, 0).getEntity().chooseDirection();
+		
 		//orc.attaque(worldMap.getCase(0, 0).getEntity());
-		System.out.println("Nb PV humain :"+ worldMap.getCase(0, 0).getEntity().getPV());
+		//System.out.println("Nb PV humain :"+ worldMap.getCase(0, 0).getEntity().getPV());
 		//worldMap.getCase(0, 0).getEntity().deplacement(worldMap.getCase(0, 0));
 		//worldMap.deplacement();
 		

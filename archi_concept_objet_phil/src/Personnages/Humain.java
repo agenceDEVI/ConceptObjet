@@ -1,15 +1,17 @@
 package Personnages;
 
+import archi_concept_objet_phil.Case;
 import archi_concept_objet_phil.Rules;
 
 public class Humain extends Entity {
 
 	private static int nbHumain;
 
-	public Humain() {
+	public Humain(Case currentCase) {
 		this.PV = Rules.humain_PV_Max;
 		this.PE = Rules.humain_PE_Max;
 		this.XP = 0;
+		this.currentCase=currentCase;
 		nbHumain++;
 	}
 	@Override

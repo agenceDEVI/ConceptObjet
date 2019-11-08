@@ -13,7 +13,7 @@ public abstract class Entity {
 	protected int PE;
 	protected int PV;
 	protected int XP;
-	private Case currentCase;
+	protected Case currentCase;
 	
 	protected int nbrPopulationAlliance;
 	protected static boolean alliance;
@@ -47,10 +47,11 @@ public abstract class Entity {
 	}
 	
 	public Direction humanCorner() {
+		System.out.println("je cherche");
 		switch (rand.nextInt(3)) {
-		case 0: return Direction.BAS;
-		case 1: return Direction.BASDROITE;
-		case 2: return Direction.DROITE;
+		case 0: System.out.println("BAS"); return Direction.BAS;
+		case 1: System.out.println("BASDROITE"); return Direction.BASDROITE;
+		case 2: System.out.println("DROITE"); return Direction.DROITE;
 		default: return null;
 		}
 	}
@@ -143,55 +144,59 @@ public abstract class Entity {
 	public void chooseDirection() {
 		if(currentCase.getX()==0) {
 			if (currentCase.getY()==0) {
-				humanCorner();
+				System.out.println("je veux");
+				checkingDirection(humanCorner());
 			}
 			else if (currentCase.getY()==Rules.worldMap_maxY) {
-				orcCorner();
+				checkingDirection(orcCorner());
 			}
 			else {
-				westLimit();
+				checkingDirection(westLimit());
 			}
 		}
 		else if (currentCase.getX()==Rules.worldMap_maxX) {
 			if (currentCase.getY()==0) {
-				elveCorner();
+				checkingDirection(elveCorner());
 			}
 			else if (currentCase.getY()==Rules.worldMap_maxY) {
-				goblinCorner();
+				checkingDirection(goblinCorner());
 			}
 			else {
-				eastLimit();
+				checkingDirection(eastLimit());
 			}
 		}
 		else {
 			if (currentCase.getY()==0) {
-				northLimit();
+				checkingDirection(northLimit());
 			}
 			else if (currentCase.getY()==Rules.worldMap_maxY) {
-				southLimit();
+				checkingDirection(southLimit());
 			}
 			else {
-				center();
+				checkingDirection(center());
 			}
 		}
 	}
 	
 	public void checkingDirection(Direction direction) {
+		System.out.println("je vais");
 		switch (direction) {
 		case HAUT:
-			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()+1)) {
-				if (WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()+1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()+1).getEntity(),currentCase.getX(), currentCase.getY()+1);
+			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()-1)) {
+				if (WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()-1).getEntity()!=null) {
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()+1).getEntity(),currentCase.getX(), currentCase.getY()-1);
 				}
-				else move(currentCase.getX(),currentCase.getY()+1);
+				else move(currentCase.getX(),currentCase.getY()-1);
 			}
+			break;
 		case HAUTGAUCHE:
-			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY()+1)) {
-				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity(),currentCase.getX()-1,currentCase.getY()+1);
+			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY()-1)) {
+				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity()!=null) {
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity(),currentCase.getX()-1,currentCase.getY()-1);
 				}
-				else move(currentCase.getX()-1,currentCase.getY()+1);
+				else move(currentCase.getX()-1,currentCase.getY()-1);
 			}
+			break;
 		case GAUCHE:
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY())) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()).getEntity()!=null) {
@@ -199,27 +204,31 @@ public abstract class Entity {
 				}
 				else move(currentCase.getX()-1,currentCase.getY());
 			}
+			break;
 		case BASGAUCHE:
-			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY()-1)) {
-				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity(),currentCase.getX()-1,currentCase.getY()-1);
+			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY()+1)) {
+				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity()!=null) {
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity(),currentCase.getX()-1,currentCase.getY()+1);
 				}
-				else move(currentCase.getX()-1,currentCase.getY()-1);
+				else move(currentCase.getX()-1,currentCase.getY()+1);
 			}
+			break;
 		case BAS:
-			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()-1)) {
-				if (WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()-1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()-1).getEntity(),currentCase.getX(),currentCase.getY()-1);
+			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()+1)) {
+				if (WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()+1).getEntity()!=null) {
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()-1).getEntity(),currentCase.getX(),currentCase.getY()+1);
 				}
-				else move(currentCase.getX(),currentCase.getY()-1);
+				else move(currentCase.getX(),currentCase.getY()+1);
 			}
+			break;
 		case BASDROITE:
-			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY()-1)) {
-				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity(),currentCase.getX()+1,currentCase.getY()-1);
+			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY()+1)) {
+				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity()!=null) {
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity(),currentCase.getX()+1,currentCase.getY()+1);
 				}
-				else move(currentCase.getX()+1,currentCase.getY()-1);
+				else move(currentCase.getX()+1,currentCase.getY()+1);
 			}
+			break;
 		case DROITE:
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY())) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()).getEntity()!=null) {
@@ -227,19 +236,22 @@ public abstract class Entity {
 				}
 				else move(currentCase.getX()+1,currentCase.getY());
 			}
+			break;
 		case HAUTDROITE:
-			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY()+1)) {
-				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity(),currentCase.getX()+1,currentCase.getY()+1);
+			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY()-1)) {
+				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity()!=null) {
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity(),currentCase.getX()+1,currentCase.getY()-1);
 				}
-				else move(currentCase.getX()+1,currentCase.getY()+1);
+				else move(currentCase.getX()+1,currentCase.getY()-1);
 			}
+			break;
 		default:
 			System.out.println("!!!!!BUG!!!!!!");
 		}
 	}
 	
 	public void move(int x, int y) {
+		System.out.println("je bouge");
 		Case nextCase = WorldMapService.getMap().getCase(x, y);
 		nextCase.setEntity(this);
 		currentCase.setEntity(null);
