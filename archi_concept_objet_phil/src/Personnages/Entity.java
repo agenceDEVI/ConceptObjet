@@ -141,10 +141,8 @@ public abstract class Entity extends EntitySuperClass {
 	}
 	
 	public void chooseDirection() {
-		System.out.println("rnfjkegn");
 		if(currentCase.getX()==0) {
 			if (currentCase.getY()==0) {
-				System.out.println("je veux");
 				checkingDirection(humanCorner());
 			}
 			else if (currentCase.getY()==Rules.worldMap_maxY) {
@@ -179,76 +177,67 @@ public abstract class Entity extends EntitySuperClass {
 	}
 	
 	public void checkingDirection(Direction direction) {
-		System.out.println("je vais");
 		switch (direction) {
 		case HAUT:
-			System.out.println("testHaut");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()-1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()-1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()-1).getEntity(),currentCase.getX(), currentCase.getY()-1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()-1).getEntity(),currentCase.getX(), currentCase.getY()-1);
 				}
 				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX(),currentCase.getY()-1);
 			}
 			break;
 		case HAUTGAUCHE:
-			System.out.println("TestHG");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY()-1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity(),currentCase.getX()-1,currentCase.getY()-1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity(),currentCase.getX()-1,currentCase.getY()-1);
 				}
 				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()-1,currentCase.getY()-1);
 			}
 			break;
 		case GAUCHE:
-			System.out.println("TestG");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY())) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()).getEntity(),currentCase.getX()-1,currentCase.getY());
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()).getEntity(),currentCase.getX()-1,currentCase.getY());
 				}
 				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()-1,currentCase.getY());
 			}
 			break;
 		case BASGAUCHE:
-			System.out.println("BG");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY()+1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity(),currentCase.getX()-1,currentCase.getY()+1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity(),currentCase.getX()-1,currentCase.getY()+1);
 				}
 				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()-1,currentCase.getY()+1);
 			}
 			break;
 		case BAS:
-			System.out.println("B");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()+1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()+1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()+1).getEntity(),currentCase.getX(),currentCase.getY()+1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()+1).getEntity(),currentCase.getX(),currentCase.getY()+1);
 				}
 				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX(),currentCase.getY()+1);
 			}
 			break;
 		case BASDROITE:
-			System.out.println("BD");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY()+1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity(),currentCase.getX()+1,currentCase.getY()+1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity(),currentCase.getX()+1,currentCase.getY()+1);
 				}
 				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()+1,currentCase.getY()+1);
 			}
 			break;
 		case DROITE:
-			System.out.println("D");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY())) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()).getEntity(),currentCase.getX()+1,currentCase.getY());
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()).getEntity(),currentCase.getX()+1,currentCase.getY());
 				}
 				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()+1,currentCase.getY());
 			}
 			break;
 		case HAUTDROITE:
-			System.out.println("HD");
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY()-1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity(),currentCase.getX()+1,currentCase.getY()-1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity(),currentCase.getX()+1,currentCase.getY()-1);
 				}
 				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()+1,currentCase.getY()-1);
 			}
@@ -260,52 +249,43 @@ public abstract class Entity extends EntitySuperClass {
 	
 
 	
-	public void rencontre(Entity entity,int x, int y){
-		switch (getClass().getSimpleName()) {
+	public void rencontre(Entity attack,Entity defense,int x, int y){
+		switch (attack.getClass().getSimpleName()) {
 			case "Humain":
-				System.out.println("Humain gvfgbg");
-				switch (entity.getClass().getSimpleName()){
+				switch (defense.getClass().getSimpleName()){
 					case "Humain":
-						System.out.println("testezt");
-						helpSameRace(entity);
-						System.out.println("tesoijforegn");
+						helpSameRace(defense);
 						break;
 					case "Elfe":
-						helpSameAlliance(entity);
+						helpSameAlliance(defense);
 						break;
 					default:
-						System.out.println("default");
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.HUMAN){
-							fight(entity);
+							fight(attack,defense);
 						}
 						else{
-							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && entity.getClass().getSimpleName() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && entity.getClass().getSimpleName() == "Gobelin")  ){
-								fight(entity);
+							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && defense.getClass().getSimpleName() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && defense.getClass().getSimpleName() == "Gobelin")  ){
+								fight(attack,defense);
 							}						
 						}
 						break;
 				}
 
 			case "Elfe":
-				System.out.println("elfe gvfgbg");
-				switch (entity.getClass().getSimpleName()){
+				switch (defense.getClass().getSimpleName()){
 					case "Humain":
-						System.out.println("testezt");
-						helpSameAlliance(entity);
-						
-						System.out.println("tesoijforegn");
+						helpSameAlliance(defense);						
 						break;
 					case "Elfe":
-						helpSameRace(entity);
+						helpSameRace(defense);
 						break;
 					default:
-						System.out.println("default");
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ELVE){
-							fight(entity);
+							fight(attack,defense);
 						}
 						else{
-							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && entity.getClass().getSimpleName() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && entity.getClass().getSimpleName() == "Gobelin")  ){
-								fight(entity);
+							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && defense.getClass().getSimpleName() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && defense.getClass().getSimpleName() == "Gobelin")  ){
+								fight(attack,defense);
 							}						
 						}
 						break;
@@ -313,42 +293,40 @@ public abstract class Entity extends EntitySuperClass {
 				
 
 			case "Orc":
-				System.out.println("Orc gvfgbg");
-				switch (entity.getClass().getSimpleName()){
+				switch (defense.getClass().getSimpleName()){
 					case "Orc":
-						helpSameAlliance(entity);						
+						helpSameAlliance(defense);						
 						break;
 					case "Gobelin":
-						helpSameRace(entity);
+						helpSameRace(defense);
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ORC){
-							fight(entity);
+							fight(attack,defense);
 						}
 						else{
-							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && entity.getClass().getSimpleName() == "Elfe") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && entity.getClass().getSimpleName() == "Humain")  ){
-								fight(entity);
+							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && defense.getClass().getSimpleName() == "Elfe") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && defense.getClass().getSimpleName() == "Humain")  ){
+								fight(attack,defense);
 							}						
 						}
 						break;
 				}
 
 			case "Gobelin":
-				System.out.println("Gobelin gvfgbg");
-				switch (entity.getClass().getSimpleName()){
+				switch (defense.getClass().getSimpleName()){
 					case "Gobelin":
-						helpSameAlliance(entity);
+						helpSameAlliance(defense);
 						break;
 					case "Orc":
-						helpSameRace(entity);
+						helpSameRace(defense);
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.GOBLIN){
-							fight(entity);
+							fight(attack,defense);
 						}
 						else{
-							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && entity.getClass().getSimpleName() == "Elfe") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && entity.getClass().getSimpleName() == "Humain")  ){
-								fight(entity);
+							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && defense.getClass().getSimpleName() == "Elfe") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && defense.getClass().getSimpleName() == "Humain")  ){
+								fight(attack,defense);
 							}						
 						}
 						break;
@@ -359,7 +337,6 @@ public abstract class Entity extends EntitySuperClass {
 		}
 	}
 	public void helpSameRace(Entity entity){
-		System.out.println("HelpSAME RACEN froegneo ");
 		if(entity.getPV() > 0 ){
 			int PV_redistribue = (entity.getPV() + this.getPV())/2;
 			entity.setPV(PV_redistribue);
@@ -414,19 +391,21 @@ public abstract class Entity extends EntitySuperClass {
 		}
 	}
 
-	public void fight(Entity entity){
-        while(this.getPV() > 0 || entity.getPV() >0 ){
-            this.attack(entity);
-            entity.attack(this);
+	public void fight(Entity attack,Entity defense){
+        while(attack.getPV() > 0 || defense.getPV() >0 ){
+            attack.attack(defense);
+            defense.getPV();
+            defense.attack(attack);
+            attack.getPV();
 
         }
         if(this.getPV() <= 0 ){
-            WorldMapService.getMap().death(this);
-            entity.setXP(entity.getXP() + this.getXP());
+            WorldMapService.getMap().death(attack);
+            defense.setXP(defense.getXP() + attack.getXP());
         }
         else{
-            WorldMapService.getMap().death(entity);
-            entity.setXP(entity.getXP() + this.getXP());
+            WorldMapService.getMap().death(defense);
+            defense.setXP(defense.getXP() + attack.getXP());
         }
     }
 	

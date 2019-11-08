@@ -22,7 +22,6 @@ public class GameManager {
 		while( ((Humain.getNbHumain()+Elfe.getNbElfe()) > 0 && (Orc.getNbOrc()+Gobelin.getNbGoblelin()) > 0) || compteurTour <1000){
 			for(int i=0;i<worldMap.entities.size();i++/*Entity e : worldMap.entities*/){
 				worldMap.entities.get(i).chooseDirection();
-				System.out.println("test");
 				//TimeUnit.SECONDS.sleep(2);
 			}
 		}

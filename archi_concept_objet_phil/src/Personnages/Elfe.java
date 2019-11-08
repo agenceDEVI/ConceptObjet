@@ -39,8 +39,9 @@ public class Elfe extends Entity {
 	@Override
 	public void attack(Entity entity){
         System.out.println("Touche sa cible avec sa flèche");
-        int damage = this.XP;
+        int damage = this.XP+1;
         entity.setPV(entity.getPV() - damage);
+        System.out.println(entity.getPV());
     }
 
 	/**

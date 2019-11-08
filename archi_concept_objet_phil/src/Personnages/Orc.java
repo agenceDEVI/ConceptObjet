@@ -40,8 +40,9 @@ public class Orc extends Entity {
 	@Override
 	public void attack(Entity entity){
         System.out.println("Met un coup avec sa hache");
-        int damage = this.XP;
+        int damage = this.XP+1;
         entity.setPV(entity.getPV() - damage);
+        System.out.println(entity.getPV());
     }
 
 	/**
