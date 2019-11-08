@@ -151,7 +151,7 @@ public abstract class Entity extends EntitySuperClass {
 				System.out.println("humanCorner");
 				checkingDirection(humanCorner());
 			}
-			else if (currentCase.getY()==Rules.worldMap_maxX) {
+			else if (currentCase.getY()==Rules.worldMap_maxX-1) {
 				System.out.println("orcCorner");
 				checkingDirection(orcCorner());
 			}
@@ -160,12 +160,12 @@ public abstract class Entity extends EntitySuperClass {
 				checkingDirection(westLimit());
 			}
 		}
-		else if (currentCase.getY()==Rules.worldMap_maxY) {
+		else if (currentCase.getY()==Rules.worldMap_maxY-1) {
 			if (currentCase.getX()==0) {
 				System.out.println("elveCorner");
 				checkingDirection(elveCorner());
 			}
-			else if (currentCase.getX()==Rules.worldMap_maxX) {
+			else if (currentCase.getX()==Rules.worldMap_maxX-1) {
 				System.out.println("goblinCorner");
 				checkingDirection(goblinCorner());
 			}
@@ -179,7 +179,7 @@ public abstract class Entity extends EntitySuperClass {
 				System.out.println("northLimit");
 				checkingDirection(northLimit());
 			}
-			else if (currentCase.getX()==Rules.worldMap_maxX) {
+			else if (currentCase.getX()==Rules.worldMap_maxX-1) {
 				System.out.println("southLimit");
 				checkingDirection(southLimit());
 			}
@@ -231,11 +231,11 @@ public abstract class Entity extends EntitySuperClass {
 			break;
 		case BAS:
 			System.out.println("BAS");
-			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()+1)) {
-				if (WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()+1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()+1).getEntity(),currentCase.getX(),currentCase.getY()+1);
+			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY())) {
+				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()).getEntity()!=null) {
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()).getEntity(),WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()).getEntity(),currentCase.getX()+1,currentCase.getY());
 				}
-				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX(),currentCase.getY()+1);
+				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()+1,currentCase.getY());
 			}
 			break;
 		case BASDROITE:

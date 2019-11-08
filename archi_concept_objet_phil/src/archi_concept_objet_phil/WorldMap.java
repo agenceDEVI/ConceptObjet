@@ -85,7 +85,8 @@ public class WorldMap {
 	} 
 	
 	public boolean checkingCase(int a, int b) {
-		if(this.getCase(a, b).getCaseType()==CaseType.OBSTACLE) {
+		System.out.println("a="+a+" b="+b);
+		if(this.getCase(b, a).getCaseType()==CaseType.OBSTACLE) {
 			return false;
 		}
 		else {
@@ -98,24 +99,24 @@ public class WorldMap {
 		for(int i = 0; i < Rules.worldMap_maxX; i++) {
 			for(int j = 0; j < Rules.worldMap_maxY; j++) {
 				if(i<Rules.worldMap_sizeSafeZone && j<Rules.worldMap_sizeSafeZone) {
-					worldMap[i][j]=new Case(i,j,CaseType.HUMAN);
+					worldMap[j][i]=new Case(j,i,CaseType.HUMAN);
 				}
 				else if (i<Rules.worldMap_sizeSafeZone && j>(Rules.worldMap_maxX-(1+Rules.worldMap_sizeSafeZone))) {
-					worldMap[i][j]=new Case(i,j,CaseType.ELVE);
+					worldMap[j][i]=new Case(j,i,CaseType.ELVE);
 				}
 				else if (i>(Rules.worldMap_maxY-(1+Rules.worldMap_sizeSafeZone)) && j<Rules.worldMap_sizeSafeZone) {
-					worldMap[i][j]=new Case(i,j,CaseType.GOBLIN);
+					worldMap[j][i]=new Case(j,i,CaseType.GOBLIN);
 				}
 				else if (i>(Rules.worldMap_maxY-(1+Rules.worldMap_sizeSafeZone)) && j>(Rules.worldMap_maxX-(1+Rules.worldMap_sizeSafeZone))) {
-					worldMap[i][j]=new Case(i,j,CaseType.ORC);
+					worldMap[j][i]=new Case(j,i,CaseType.ORC);
 				}
 				else {
 					
 					if(rand.nextInt(20)==10) {
-						worldMap[i][j]=new Case(i,j,CaseType.OBSTACLE);
+						worldMap[j][i]=new Case(j,i,CaseType.OBSTACLE);
 					}
 					else {
-						worldMap[i][j]=new Case(i,j,CaseType.WASTELAND);
+						worldMap[j][i]=new Case(j,i,CaseType.WASTELAND);
 					}
 					
 				}
@@ -128,8 +129,8 @@ public class WorldMap {
 	
 	public void positionnementEntity() {
 		nbEntities=0;
-		for(int i = 0; i < Rules.worldMap_maxX-1; i++) {
-			for(int j = 0; j < Rules.worldMap_maxY-1; j++) {
+		for(int i = 0; i < Rules.worldMap_maxX; i++) {
+			for(int j = 0; j < Rules.worldMap_maxY; j++) {
 				switch (worldMap[i][j].getCaseType()) {
 				case HUMAN:
 					if (rand.nextInt(6)==1) {

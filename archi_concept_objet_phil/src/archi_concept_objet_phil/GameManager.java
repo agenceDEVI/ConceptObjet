@@ -17,24 +17,36 @@ public class GameManager {
 	public void deroulementPartie() {//throws InterruptedException{
 		worldMap.positionnementEntity();
 		int compteurTour = 0;
-		int allie = Humain.getNbHumain()+Elfe.getNbElfe();
-		int ennemi = Orc.getNbOrc()+Gobelin.getNbGoblelin();
-		while( allie > 0 && ennemi > 0 && compteurTour <1000 ){
+		
+		while( ((Humain.getNbHumain()+Elfe.getNbElfe()) > 0 && (Orc.getNbOrc()+Gobelin.getNbGoblelin()) > 0) && compteurTour <500){
 			System.out.println(worldMap.getNbEntities());
 			System.out.println("nbhulain"+Humain.getNbHumain());
 			System.out.println("nbgobelin"+Gobelin.getNbGoblelin());
 			for(int i=0;i<worldMap.getNbEntities();i++/*Entity e : worldMap.entities*/){
-				System.out.println(worldMap.getNbEntities());
-					System.out.println(i);
+					System.out.println("################################################################");
+					System.out.println("Nb Entité : "+worldMap.getNbEntities());
 					System.out.println(worldMap.getEntities().get(i));
+					System.out.println("entité numéro : "+i);
+					System.out.println(worldMap.getEntities().get(i).getCurrentCase().toString());
+					System.out.println("getX :"+worldMap.getEntities().get(i).getCurrentCase().getX());
+					System.out.println("getY :"+worldMap.getEntities().get(i).getCurrentCase().getY());
 					WorldMapService.getMap().displayWorldMap();
 					worldMap.getEntities().get(i).chooseDirection();
 					compteurTour++;
 					System.out.println("nouveau tour"+compteurTour);
-					allie = Humain.getNbHumain()+Elfe.getNbElfe();
-					ennemi = Orc.getNbOrc()+Gobelin.getNbGoblelin();
-					//TimeUnit.SECONDS.sleep(2);
+					/*try {
+						TimeUnit.MICROSECONDS.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}*/
 				}
+			try {
+				TimeUnit.SECONDS.sleep(3);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(Humain.getNbHumain()+Elfe.getNbElfe() > 0){
 			System.out.println("Les gentils Win");
