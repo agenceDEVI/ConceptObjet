@@ -39,12 +39,12 @@ public class GameManager {
 						e.printStackTrace();
 					}*/
 				}
-			try {
+			/*try {
 				TimeUnit.SECONDS.sleep(3);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 		}
 		if(Humain.getNbHumain()+Elfe.getNbElfe() > 0){
 			System.out.println("Les gentils Win");

@@ -146,42 +146,42 @@ public abstract class Entity extends EntitySuperClass {
 	}
 	
 	public void chooseDirection() {
-		if(currentCase.getY()==0) {
-			if (currentCase.getX()==0) {
+		if(currentCase.getX()==0) {
+			if (currentCase.getY()==0) {
 				System.out.println("humanCorner");
 				checkingDirection(humanCorner());
 			}
-			else if (currentCase.getY()==Rules.worldMap_maxX-1) {
-				System.out.println("orcCorner");
-				checkingDirection(orcCorner());
-			}
-			else {
-				System.out.println("westLimit");
-				checkingDirection(westLimit());
-			}
-		}
-		else if (currentCase.getY()==Rules.worldMap_maxY-1) {
-			if (currentCase.getX()==0) {
+			else if (currentCase.getY()==Rules.worldMap_maxY-1) {
 				System.out.println("elveCorner");
 				checkingDirection(elveCorner());
 			}
-			else if (currentCase.getX()==Rules.worldMap_maxX-1) {
+			else {
+				System.out.println("northLimit");
+				checkingDirection(northLimit());
+			}
+		}
+		else if (currentCase.getX()==Rules.worldMap_maxX-1) {
+			if (currentCase.getY()==0) {
+				System.out.println("orcCorner");
+				checkingDirection(orcCorner());
+			}
+			else if (currentCase.getY()==Rules.worldMap_maxY-1) {
 				System.out.println("goblinCorner");
 				checkingDirection(goblinCorner());
 			}
 			else {
-				System.out.println("eastLimit");
-				checkingDirection(eastLimit());
+				System.out.println("southLimit");
+				checkingDirection(southLimit());
 			}
 		}
 		else {
-			if (currentCase.getX()==0) {
-				System.out.println("northLimit");
-				checkingDirection(northLimit());
+			if (currentCase.getY()==0) {
+				System.out.println("westLimit");
+				checkingDirection(westLimit());
 			}
-			else if (currentCase.getX()==Rules.worldMap_maxX-1) {
-				System.out.println("southLimit");
-				checkingDirection(southLimit());
+			else if (currentCase.getY()==Rules.worldMap_maxX-1) {
+				System.out.println("eastLimit");
+				checkingDirection(eastLimit());
 			}
 			else {
 				System.out.println("center");

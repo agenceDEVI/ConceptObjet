@@ -10,7 +10,7 @@ public class Humain extends Entity {
 	public Humain(Case currentCase) {
 		this.PV = Rules.humain_PV_Max;
 		this.PE = Rules.humain_PE_Max;
-		this.XP = 0;
+		this.XP = Rules.humain_XP_Start;
 		this.currentCase=currentCase;
 		super.race = "Humain";
 		nbHumain++;

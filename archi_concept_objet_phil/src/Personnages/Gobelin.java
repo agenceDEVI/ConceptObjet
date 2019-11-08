@@ -10,7 +10,7 @@ public class Gobelin extends Entity {
 	public Gobelin(Case currentCase) {
 		this.PV = Rules.gobelin_PV_Max;
 		this.PE = Rules.gobelin_PE_Max;
-		this.XP = 0;
+		this.XP = Rules.gobelin_XP_Start;
 		super.race = "Gobelin";
 		this.currentCase=currentCase;
 

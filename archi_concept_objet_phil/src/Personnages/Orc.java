@@ -10,7 +10,7 @@ public class Orc extends Entity {
 	public Orc(Case currentCase) {
 		this.PV = Rules.orc_PV_Max;
 		this.PE = Rules.orc_PE_Max;
-		this.XP = 0;
+		this.XP = Rules.orc_XP_Start;
 		super.race = "Orc";
 		this.currentCase=currentCase;
 
