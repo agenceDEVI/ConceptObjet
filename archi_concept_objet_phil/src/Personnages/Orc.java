@@ -11,7 +11,10 @@ public class Orc extends Entity {
 		this.PV = Rules.orc_PV_Max;
 		this.PE = Rules.orc_PE_Max;
 		this.XP = 0;
+		super.race = "Orc";
 		this.currentCase=currentCase;
+
+
 		nbOrc++;
 	}
 	

@@ -11,7 +11,9 @@ public class Elfe extends Entity {
 		this.PV = Rules.elfe_PV_Max;
 		this.PE = Rules.elfe_PE_Max;
 		this.XP = 0;
+		super.race = "Elfe";
 		this.currentCase=currentCase;
+
 		nbElfe++;
 	}
 	

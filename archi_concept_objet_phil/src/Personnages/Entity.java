@@ -14,14 +14,12 @@ public abstract class Entity extends EntitySuperClass {
 	protected int PV;
 	protected int XP;
 	protected Case currentCase;
-	
+	protected String race;
 	protected int nbrPopulationAlliance;
-	protected int nbrPopulationAdverse;
 	protected static boolean alliance;
 	
 	public abstract void initPV_PE();
 	public abstract void attaque(Entity ennemi);
-	
 	Random rand = new Random();
 	
 	/**
@@ -143,6 +141,7 @@ public abstract class Entity extends EntitySuperClass {
 	}
 	
 	public void chooseDirection() {
+		System.out.println("rnfjkegn");
 		if(currentCase.getX()==0) {
 			if (currentCase.getY()==0) {
 				System.out.println("je veux");
@@ -262,82 +261,105 @@ public abstract class Entity extends EntitySuperClass {
 
 	
 	public void rencontre(Entity entity,int x, int y){
-		switch (entity.getClass().getSimpleName().toString()) {
+		switch (getClass().getSimpleName()) {
 			case "Humain":
-				System.out.println("rencontre humain :");
-				System.out.println(this);
-				System.out.println(entity.toString());
-				if(this.getClass().getSimpleName().toString() == "Humain"){
-					helpSameRace(entity);
-				}
-				if(this.getClass().getSimpleName().toString() == "Elfe"){
-					helpSameAlliance(entity);
-				}
-				else{
-					if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.HUMAN){
-						fight(entity);
-					}
-					else{
-						if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && entity.getClass().getSimpleName().toString() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && entity.getClass().getSimpleName().toString() == "Gobelin")  ){
+				System.out.println("Humain gvfgbg");
+				switch (entity.getClass().getSimpleName()){
+					case "Humain":
+						System.out.println("testezt");
+						helpSameRace(entity);
+						System.out.println("tesoijforegn");
+						break;
+					case "Elfe":
+						helpSameAlliance(entity);
+						break;
+					default:
+						System.out.println("default");
+						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.HUMAN){
 							fight(entity);
 						}
-					}
-					
+						else{
+							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && entity.getClass().getSimpleName() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && entity.getClass().getSimpleName() == "Gobelin")  ){
+								fight(entity);
+							}						
+						}
+						break;
 				}
+
 			case "Elfe":
-				if(this.getClass().getSimpleName().toString() == "Elfe"){
-					helpSameRace(entity);
-				}
-				if(this.getClass().getSimpleName().toString() == "Humain"){
-					helpSameAlliance(entity);
-				}
-				else{
-					if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ELVE){
-						fight(entity);
-					}
-					else{
-						if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && entity.getClass().getSimpleName().toString() == "Orc") || !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && entity.getClass().getSimpleName().toString() == "Gobelin")  ){
+				System.out.println("elfe gvfgbg");
+				switch (entity.getClass().getSimpleName()){
+					case "Humain":
+						System.out.println("testezt");
+						helpSameAlliance(entity);
+						
+						System.out.println("tesoijforegn");
+						break;
+					case "Elfe":
+						helpSameRace(entity);
+						break;
+					default:
+						System.out.println("default");
+						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ELVE){
 							fight(entity);
 						}
-					}
+						else{
+							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && entity.getClass().getSimpleName() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && entity.getClass().getSimpleName() == "Gobelin")  ){
+								fight(entity);
+							}						
+						}
+						break;
 				}
+				
+
 			case "Orc":
-				if(this.getClass().getSimpleName().toString() == "Orc"){
-					helpSameRace(entity);
-				}
-				if(this.getClass().getSimpleName().toString() == "Gobelin"){
-					helpSameAlliance(entity);
-				}
-				else{
-					if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ORC){
-						fight(entity);
-					}
-					else{
-						if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && entity.getClass().getSimpleName().toString() == "Elfe") || !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && entity.getClass().getSimpleName().toString() == "Humain")  ){
+				System.out.println("Orc gvfgbg");
+				switch (entity.getClass().getSimpleName()){
+					case "Orc":
+						helpSameAlliance(entity);						
+						break;
+					case "Gobelin":
+						helpSameRace(entity);
+						break;
+					default:
+						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ORC){
 							fight(entity);
 						}
-					}
+						else{
+							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && entity.getClass().getSimpleName() == "Elfe") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && entity.getClass().getSimpleName() == "Humain")  ){
+								fight(entity);
+							}						
+						}
+						break;
 				}
+
 			case "Gobelin":
-				if(this.getClass().getSimpleName().toString() == "Gobelin"){
-					helpSameRace(entity);
-				}
-				if(this.getClass().getSimpleName().toString() == "Orc"){
-					helpSameAlliance(entity);
-				}
-				else{
-					if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.GOBLIN){
-						fight(entity);
-					}
-					else{
-						if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && entity.getClass().getSimpleName().toString() == "Elfe") || !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && entity.getClass().getSimpleName().toString() == "Humain")  ){
+				System.out.println("Gobelin gvfgbg");
+				switch (entity.getClass().getSimpleName()){
+					case "Gobelin":
+						helpSameAlliance(entity);
+						break;
+					case "Orc":
+						helpSameRace(entity);
+						break;
+					default:
+						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.GOBLIN){
 							fight(entity);
 						}
-					}
+						else{
+							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && entity.getClass().getSimpleName() == "Elfe") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && entity.getClass().getSimpleName() == "Humain")  ){
+								fight(entity);
+							}						
+						}
+						break;
 				}
+				
+
+
 		}
 	}
 	public void helpSameRace(Entity entity){
+		System.out.println("HelpSAME RACEN froegneo ");
 		if(entity.getPV() > 0 ){
 			int PV_redistribue = (entity.getPV() + this.getPV())/2;
 			entity.setPV(PV_redistribue);
@@ -409,5 +431,11 @@ public abstract class Entity extends EntitySuperClass {
     }
 	
 	public abstract void attack(Entity entitie);
+	public String getRace() {
+		return race;
+	}
+	public void setRace(String race) {
+		this.race = race;
+	}
 
 }

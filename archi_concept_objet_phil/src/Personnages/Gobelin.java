@@ -11,7 +11,9 @@ public class Gobelin extends Entity {
 		this.PV = Rules.gobelin_PV_Max;
 		this.PE = Rules.gobelin_PE_Max;
 		this.XP = 0;
+		super.race = "Gobelin";
 		this.currentCase=currentCase;
+
 		nbGoblelin++;
 	}
 	

@@ -12,6 +12,7 @@ public class Humain extends Entity {
 		this.PE = Rules.humain_PE_Max;
 		this.XP = 0;
 		this.currentCase=currentCase;
+		super.race = "Humain";
 		nbHumain++;
 	}
 	@Override
