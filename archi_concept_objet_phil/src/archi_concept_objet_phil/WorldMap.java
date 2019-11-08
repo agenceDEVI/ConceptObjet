@@ -53,7 +53,7 @@ public class WorldMap {
 		System.out.println("Affichage de la carte:");
 		//Première coordonnée X de la première case
 		int posX = worldMapList.get(0).getX();
-		for (Case mapCase : worldMapList) {
+		/*for (Case mapCase : worldMapList) {
 			if(mapCase.getX()!=posX) { //Si le X change on change de ligne
 				System.out.println();
 				posX+=1;
@@ -64,6 +64,19 @@ public class WorldMap {
 			else {
 				System.out.print(mapCase.getEntity().toString());
 			}
+		}*/
+		
+		for (int i = 0; i < Rules.worldMap_maxX; i++) {
+			for (int j = 0; j < Rules.worldMap_maxY; j++) {
+				
+				if(worldMap[i][j].getEntity()==null) {
+					worldMap[i][j].displayCase();
+				}
+				else {
+					System.out.print(worldMap[i][j].getEntity().toString());
+				}
+			}
+			System.out.println();
 		}
 		System.out.println();
 	} 
@@ -171,11 +184,10 @@ public class WorldMap {
         }
     }
 	
-	public void move(int x, int y) {
+	public void move(int previousX, int previousY, int nextX, int nextY) {
 		System.out.println("je bouge");
-		Case nextCase = WorldMapService.getMap().getCase(x, y);
-		nextCase.setEntity(this);
-		currentCase.setEntity(null);
-		this.currentCase = nextCase;
+		worldMap[nextX][nextY].setEntity(worldMap[previousX][previousY].getEntity());
+		System.out.println("Je suis dans move"+worldMap[previousX][previousY].getEntity()+" //// "+worldMap[nextX][nextY].getEntity());
+		worldMap[previousX][previousY].setEntity(null);
 	}
 }

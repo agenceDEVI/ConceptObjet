@@ -43,7 +43,9 @@ public class GameHandler {
 		System.out.println(worldMap.getCase(0, 0).getEntity());
 		System.out.println("je veux");
 		worldMap.getCase(0, 0).getEntity().chooseDirection();
-		
+		System.out.println("BAS "+worldMap.getCase(0, 1).getEntity());
+		System.out.println("BASDROITE "+worldMap.getCase(1, 1).getEntity());
+		System.out.println("DROITE "+worldMap.getCase(1, 0).getEntity());
 		//orc.attaque(worldMap.getCase(0, 0).getEntity());
 		//System.out.println("Nb PV humain :"+ worldMap.getCase(0, 0).getEntity().getPV());
 		//worldMap.getCase(0, 0).getEntity().deplacement(worldMap.getCase(0, 0));

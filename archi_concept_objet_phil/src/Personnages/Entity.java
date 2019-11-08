@@ -8,7 +8,7 @@ import archi_concept_objet_phil.Direction;
 import archi_concept_objet_phil.Rules;
 import archi_concept_objet_phil.WorldMapService;
 
-public abstract class Entity {
+public abstract class Entity extends EntitySuperClass {
 	
 	protected int PE;
 	protected int PV;
@@ -184,17 +184,17 @@ public abstract class Entity {
 		case HAUT:
 			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()-1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()-1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()+1).getEntity(),currentCase.getX(), currentCase.getY()-1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(), currentCase.getY()-1).getEntity(),currentCase.getX(), currentCase.getY()-1);
 				}
-				else move(currentCase.getX(),currentCase.getY()-1);
+				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX(),currentCase.getY()-1);
 			}
 			break;
 		case HAUTGAUCHE:
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY()-1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity(),currentCase.getX()-1,currentCase.getY()-1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity(),currentCase.getX()-1,currentCase.getY()-1);
 				}
-				else move(currentCase.getX()-1,currentCase.getY()-1);
+				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()-1,currentCase.getY()-1);
 			}
 			break;
 		case GAUCHE:
@@ -202,31 +202,31 @@ public abstract class Entity {
 				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()).getEntity()!=null) {
 					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()).getEntity(),currentCase.getX()-1,currentCase.getY());
 				}
-				else move(currentCase.getX()-1,currentCase.getY());
+				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()-1,currentCase.getY());
 			}
 			break;
 		case BASGAUCHE:
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()-1,currentCase.getY()+1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()-1).getEntity(),currentCase.getX()-1,currentCase.getY()+1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX()-1,currentCase.getY()+1).getEntity(),currentCase.getX()-1,currentCase.getY()+1);
 				}
-				else move(currentCase.getX()-1,currentCase.getY()+1);
+				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()-1,currentCase.getY()+1);
 			}
 			break;
 		case BAS:
 			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()+1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()+1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()-1).getEntity(),currentCase.getX(),currentCase.getY()+1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX(),currentCase.getY()+1).getEntity(),currentCase.getX(),currentCase.getY()+1);
 				}
-				else move(currentCase.getX(),currentCase.getY()+1);
+				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX(),currentCase.getY()+1);
 			}
 			break;
 		case BASDROITE:
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY()+1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity(),currentCase.getX()+1,currentCase.getY()+1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity(),currentCase.getX()+1,currentCase.getY()+1);
 				}
-				else move(currentCase.getX()+1,currentCase.getY()+1);
+				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()+1,currentCase.getY()+1);
 			}
 			break;
 		case DROITE:
@@ -234,15 +234,15 @@ public abstract class Entity {
 				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()).getEntity()!=null) {
 					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()).getEntity(),currentCase.getX()+1,currentCase.getY());
 				}
-				else move(currentCase.getX()+1,currentCase.getY());
+				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()+1,currentCase.getY());
 			}
 			break;
 		case HAUTDROITE:
 			if(WorldMapService.getMap().checkingCase(currentCase.getX()+1,currentCase.getY()-1)) {
 				if (WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity()!=null) {
-					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()+1).getEntity(),currentCase.getX()+1,currentCase.getY()-1);
+					rencontre(WorldMapService.getMap().getCase(currentCase.getX()+1,currentCase.getY()-1).getEntity(),currentCase.getX()+1,currentCase.getY()-1);
 				}
-				else move(currentCase.getX()+1,currentCase.getY()-1);
+				else WorldMapService.getMap().move(currentCase.getX(),currentCase.getY(),currentCase.getX()+1,currentCase.getY()-1);
 			}
 			break;
 		default:
@@ -251,7 +251,7 @@ public abstract class Entity {
 	}
 	
 	public void move(int x, int y) {
-		System.out.println("je bouge");
+		//System.out.println("je bouge");
 		Case nextCase = WorldMapService.getMap().getCase(x, y);
 		nextCase.setEntity(this);
 		currentCase.setEntity(null);
@@ -388,7 +388,7 @@ public abstract class Entity {
 
 	public void fight(Entity entity){
         while(this.getPV() > 0 || entity.getPV() >0 ){
-            int damage = this.attack(entity);
+            //int damage = this.attack(entity);
             entity.attack(this);
 
         }
