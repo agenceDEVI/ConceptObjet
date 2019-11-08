@@ -17,10 +17,12 @@ public class GameManager {
 	public void deroulementPartie() {//throws InterruptedException{
 		worldMap.positionnementEntity();
 		int compteurTour = 0;
-		
-		while( ((Humain.getNbHumain()+Elfe.getNbElfe()) > 0 && (Orc.getNbOrc()+Gobelin.getNbGoblelin()) > 0) && compteurTour <1000){
+		int allie = Humain.getNbHumain()+Elfe.getNbElfe();
+		int ennemi = Orc.getNbOrc()+Gobelin.getNbGoblelin();
+		while( allie > 0 && ennemi > 0 && compteurTour <1000 ){
 			System.out.println(worldMap.getNbEntities());
-			System.out.println(Humain.getNbHumain()+Elfe.getNbElfe());
+			System.out.println("nbhulain"+Humain.getNbHumain());
+			System.out.println("nbgobelin"+Gobelin.getNbGoblelin());
 			for(int i=0;i<worldMap.getNbEntities();i++/*Entity e : worldMap.entities*/){
 				System.out.println(worldMap.getNbEntities());
 					System.out.println(i);
@@ -29,6 +31,8 @@ public class GameManager {
 					worldMap.getEntities().get(i).chooseDirection();
 					compteurTour++;
 					System.out.println("nouveau tour"+compteurTour);
+					allie = Humain.getNbHumain()+Elfe.getNbElfe();
+					ennemi = Orc.getNbOrc()+Gobelin.getNbGoblelin();
 					//TimeUnit.SECONDS.sleep(2);
 				}
 		}

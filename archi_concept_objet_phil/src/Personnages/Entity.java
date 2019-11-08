@@ -15,7 +15,13 @@ public abstract class Entity extends EntitySuperClass {
 	protected int XP;
 	protected Case currentCase;
 	protected String race;
-	protected int nbrPopulationAlliance;
+	protected static int nbrPopulationAlliance;
+	public static int getNbrPopulationAlliance() {
+		return nbrPopulationAlliance;
+	}
+	public static void setNbrPopulationAlliance(int nbrPopulationAlliance) {
+		Entity.nbrPopulationAlliance = nbrPopulationAlliance;
+	}
 	protected static boolean alliance;
 	
 	public abstract void initPV_PE();
