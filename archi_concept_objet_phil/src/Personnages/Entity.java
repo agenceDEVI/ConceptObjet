@@ -279,13 +279,12 @@ public abstract class Entity extends EntitySuperClass {
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.HUMAN){
-							fight(attack,defense);
-							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && defense.getClass().getSimpleName() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && defense.getClass().getSimpleName() == "Gobelin")  ){
+							if((WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ORC && defense.getClass().getSimpleName() != "Orc") || (WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.GOBLIN && defense.getClass().getSimpleName() != "Gobelin")  ){
 								fight(attack,defense);
 							}						
 						}
 						break;
-				}
+				}break;
 
 			case "Elfe":
 				switch (defense.getClass().getSimpleName()){
@@ -297,13 +296,12 @@ public abstract class Entity extends EntitySuperClass {
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ELVE){
-							fight(attack,defense);
-							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && defense.getClass().getSimpleName() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && defense.getClass().getSimpleName() == "Gobelin")  ){
+							if((WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ORC && defense.getClass().getSimpleName() != "Orc") || (WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.GOBLIN && defense.getClass().getSimpleName() != "Gobelin")  ){
 								fight(attack,defense);
 							}						
 						}
 						break;
-				}
+				}break;
 				
 
 			case "Orc":
@@ -316,13 +314,12 @@ public abstract class Entity extends EntitySuperClass {
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ORC){
-							fight(attack,defense);
-							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && defense.getClass().getSimpleName() == "Elfe") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && defense.getClass().getSimpleName() == "Humain")  ){
+							if((WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ELVE && defense.getClass().getSimpleName() != "Elfe") || (WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.HUMAN && defense.getClass().getSimpleName() != "Humain")  ){
 								fight(attack,defense);
 							}						
 						}
 						break;
-				}
+				}break;
 
 			case "Gobelin":
 				switch (defense.getClass().getSimpleName()){
@@ -334,18 +331,17 @@ public abstract class Entity extends EntitySuperClass {
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.GOBLIN){
-							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && defense.getClass().getSimpleName() == "Elfe") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && defense.getClass().getSimpleName() == "Humain")  ){
+							if((WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ELVE && defense.getClass().getSimpleName() != "Elfe") || (WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.HUMAN && defense.getClass().getSimpleName() != "Humain")  ){
 								fight(attack,defense);
 							}						
 						}
 						break;
-				}
-				
-
+				}break;
 
 		}
 	}
 	public void helpSameRace(Entity attack,Entity defense){
+		System.out.println("helpRace");
 		if(defense.getPV() > 0 ){
 			int PV_redistribue = (defense.getPV() + attack.getPV())/2;
 			defense.setPV(PV_redistribue);
@@ -389,6 +385,7 @@ public abstract class Entity extends EntitySuperClass {
 		PV = pV;
 	}
 	public void helpSameAlliance(Entity attack,Entity defense){
+		System.out.println("HelpAlliance");
 		if(defense.getPV() > 0 ){
 			int XP_redistribue = (defense.getXP() + attack.getXP())/2;
 			defense.setXP(XP_redistribue);
@@ -403,17 +400,19 @@ public abstract class Entity extends EntitySuperClass {
 	public void fight(Entity attack,Entity defense){
         while(attack.getPV() > 0 && defense.getPV() >0 ){
             attack.attack(defense);
-            defense.getPV();
-            defense.attack(attack);
-            attack.getPV();
+            if(defense.getPV() <= 0){
+            	defense.attack(attack);
+            }
 
         }
         if(attack.getPV() <= 0 ){
+        	System.out.println("death ===============================");
             WorldMapService.getMap().death(attack);
             defense.setXP(defense.getXP() + attack.getXP());
             WorldMapService.getMap().setNbEntities(WorldMapService.getMap().getNbEntities()-1);;
         }
         else{
+        	System.out.println("death +++++++++++++++++++++++++++++++++");
             WorldMapService.getMap().death(defense);
             defense.setXP(defense.getXP() + attack.getXP());
             WorldMapService.getMap().setNbEntities(WorldMapService.getMap().getNbEntities()-1);;

@@ -35,7 +35,7 @@ public class Humain extends Entity {
 	@Override
 	public void attack(Entity entity){
         System.out.println("Met un coup d’épée");
-        int damage = this.XP+1;
+        int damage = this.getXP()+1;
         entity.setPV(entity.getPV() - damage);
         System.out.println(entity.getPV());
         
