@@ -189,5 +189,10 @@ public class WorldMap {
 		worldMap[nextX][nextY].setEntity(worldMap[previousX][previousY].getEntity());
 		System.out.println("Je suis dans move"+worldMap[previousX][previousY].getEntity()+" //// "+worldMap[nextX][nextY].getEntity());
 		worldMap[previousX][previousY].setEntity(null);
+		System.out.println("je test maintenant"+worldMap[previousX][previousY].getEntity()+" //// "+worldMap[nextX][nextY].getEntity());
+		System.out.println(previousX+"test"+previousY+"test"+nextX+"test"+nextY);
+		System.out.println("BAS "+this.getCase(0, 1).getEntity());
+		System.out.println("BASDROITE "+this.getCase(1, 1).getEntity());
+		System.out.println("DROITE "+this.getCase(1, 0).getEntity());
 	}
 }
