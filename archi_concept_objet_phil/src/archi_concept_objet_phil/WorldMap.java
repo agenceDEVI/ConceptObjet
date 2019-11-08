@@ -210,6 +210,7 @@ public class WorldMap {
 	public void move(int previousX, int previousY, int nextX, int nextY) {
 		System.out.println("je bouge");
 		worldMap[nextX][nextY].setEntity(worldMap[previousX][previousY].getEntity());
+		worldMap[nextX][nextY].getEntity().setCurrentCase(worldMap[nextX][nextY]);
 		System.out.println("Je suis dans move"+worldMap[previousX][previousY].getEntity()+" //// "+worldMap[nextX][nextY].getEntity());
 		worldMap[previousX][previousY].setEntity(null);
 		/*System.out.println("je test maintenant"+worldMap[previousX][previousY].getEntity()+" //// "+worldMap[nextX][nextY].getEntity());
@@ -217,5 +218,13 @@ public class WorldMap {
 		System.out.println("BAS "+this.getCase(0, 1).getEntity());
 		System.out.println("BASDROITE "+this.getCase(1, 1).getEntity());
 		System.out.println("DROITE "+this.getCase(1, 0).getEntity());*/
+	}
+
+	public int getNbEntities() {
+		return nbEntities;
+	}
+
+	public void setNbEntities(int nbEntities) {
+		this.nbEntities = nbEntities;
 	}
 }

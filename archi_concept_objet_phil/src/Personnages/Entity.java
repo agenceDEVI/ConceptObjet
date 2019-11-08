@@ -263,8 +263,6 @@ public abstract class Entity extends EntitySuperClass {
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.HUMAN){
 							fight(attack,defense);
-						}
-						else{
 							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && defense.getClass().getSimpleName() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && defense.getClass().getSimpleName() == "Gobelin")  ){
 								fight(attack,defense);
 							}						
@@ -283,8 +281,6 @@ public abstract class Entity extends EntitySuperClass {
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ELVE){
 							fight(attack,defense);
-						}
-						else{
 							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ORC && defense.getClass().getSimpleName() == "Orc") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.GOBLIN && defense.getClass().getSimpleName() == "Gobelin")  ){
 								fight(attack,defense);
 							}						
@@ -295,17 +291,15 @@ public abstract class Entity extends EntitySuperClass {
 
 			case "Orc":
 				switch (defense.getClass().getSimpleName()){
-					case "Orc":
+					case "Gobelin":
 						helpSameAlliance(attack,defense);						
 						break;
-					case "Gobelin":
+					case "Orc":
 						helpSameRace(attack,defense);
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ORC){
 							fight(attack,defense);
-						}
-						else{
 							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && defense.getClass().getSimpleName() == "Elfe") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && defense.getClass().getSimpleName() == "Humain")  ){
 								fight(attack,defense);
 							}						
@@ -315,17 +309,14 @@ public abstract class Entity extends EntitySuperClass {
 
 			case "Gobelin":
 				switch (defense.getClass().getSimpleName()){
-					case "Gobelin":
+					case "Orc":
 						helpSameAlliance(attack,defense);
 						break;
-					case "Orc":
+					case "Gobelin":
 						helpSameRace(attack,defense);
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.GOBLIN){
-							fight(attack,defense);
-						}
-						else{
 							if(!(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.ELVE && defense.getClass().getSimpleName() == "Elfe") && !(WorldMapService.getMap().getCase(x,y).getCaseType() == CaseType.HUMAN && defense.getClass().getSimpleName() == "Humain")  ){
 								fight(attack,defense);
 							}						
@@ -403,10 +394,12 @@ public abstract class Entity extends EntitySuperClass {
         if(attack.getPV() <= 0 ){
             WorldMapService.getMap().death(attack);
             defense.setXP(defense.getXP() + attack.getXP());
+            WorldMapService.getMap().setNbEntities(WorldMapService.getMap().getNbEntities()-1);;
         }
         else{
             WorldMapService.getMap().death(defense);
             defense.setXP(defense.getXP() + attack.getXP());
+            WorldMapService.getMap().setNbEntities(WorldMapService.getMap().getNbEntities()-1);;
         }
     }
 	
