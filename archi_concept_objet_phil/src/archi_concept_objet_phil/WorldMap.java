@@ -126,6 +126,14 @@ public class WorldMap {
 	}
 	
 	public void positionnementEntity() {
+		worldMap[0][0].setEntity(new Humain(worldMap[0][0]));
+		entities.add(worldMap[0][0].getEntity());
+		worldMap[0][1].setEntity(new Elfe(worldMap[0][1]));
+		entities.add(worldMap[0][0].getEntity());
+		worldMap[1][0].setEntity(new Gobelin(worldMap[1][0]));
+		entities.add(worldMap[0][0].getEntity());
+		worldMap[1][1].setEntity(new Orc(worldMap[1][1]));
+		entities.add(worldMap[0][0].getEntity());
 		for(int i = 0; i < Rules.worldMap_maxX; i++) {
 			for(int j = 0; j < Rules.worldMap_maxY; j++) {
 				switch (worldMap[i][j].getCaseType()) {
@@ -162,14 +170,7 @@ public class WorldMap {
 				}
 			}
 		}
-		worldMap[0][0].setEntity(new Humain(worldMap[0][0]));
-		entities.add(worldMap[0][0].getEntity());
-		worldMap[0][1].setEntity(new Elfe(worldMap[0][1]));
-		entities.add(worldMap[0][0].getEntity());
-		worldMap[1][0].setEntity(new Gobelin(worldMap[1][0]));
-		entities.add(worldMap[0][0].getEntity());
-		worldMap[1][1].setEntity(new Orc(worldMap[1][1]));
-		entities.add(worldMap[0][0].getEntity());
+		
 	}
 	
 	public void death(Entity entity){
@@ -194,8 +195,14 @@ public class WorldMap {
     }
 	
 	public void move(int previousX, int previousY, int nextX, int nextY) {
+		System.out.println("je bouge");
 		worldMap[nextX][nextY].setEntity(worldMap[previousX][previousY].getEntity());
+		System.out.println("Je suis dans move"+worldMap[previousX][previousY].getEntity()+" //// "+worldMap[nextX][nextY].getEntity());
 		worldMap[previousX][previousY].setEntity(null);
-
+		/*System.out.println("je test maintenant"+worldMap[previousX][previousY].getEntity()+" //// "+worldMap[nextX][nextY].getEntity());
+		System.out.println(previousX+"test"+previousY+"test"+nextX+"test"+nextY);
+		System.out.println("BAS "+this.getCase(0, 1).getEntity());
+		System.out.println("BASDROITE "+this.getCase(1, 1).getEntity());
+		System.out.println("DROITE "+this.getCase(1, 0).getEntity());*/
 	}
 }

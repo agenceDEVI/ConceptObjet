@@ -177,6 +177,7 @@ public abstract class Entity extends EntitySuperClass {
 	}
 	
 	public void checkingDirection(Direction direction) {
+		System.out.println(direction);
 		switch (direction) {
 		case HAUT:
 			if(WorldMapService.getMap().checkingCase(currentCase.getX(),currentCase.getY()-1)) {
@@ -254,10 +255,10 @@ public abstract class Entity extends EntitySuperClass {
 			case "Humain":
 				switch (defense.getClass().getSimpleName()){
 					case "Humain":
-						helpSameRace(defense);
+						helpSameRace(attack,defense);
 						break;
 					case "Elfe":
-						helpSameAlliance(defense);
+						helpSameAlliance(attack,defense);
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.HUMAN){
@@ -274,10 +275,10 @@ public abstract class Entity extends EntitySuperClass {
 			case "Elfe":
 				switch (defense.getClass().getSimpleName()){
 					case "Humain":
-						helpSameAlliance(defense);						
+						helpSameAlliance(attack,defense);						
 						break;
 					case "Elfe":
-						helpSameRace(defense);
+						helpSameRace(attack,defense);
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ELVE){
@@ -295,10 +296,10 @@ public abstract class Entity extends EntitySuperClass {
 			case "Orc":
 				switch (defense.getClass().getSimpleName()){
 					case "Orc":
-						helpSameAlliance(defense);						
+						helpSameAlliance(attack,defense);						
 						break;
 					case "Gobelin":
-						helpSameRace(defense);
+						helpSameRace(attack,defense);
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.ORC){
@@ -315,10 +316,10 @@ public abstract class Entity extends EntitySuperClass {
 			case "Gobelin":
 				switch (defense.getClass().getSimpleName()){
 					case "Gobelin":
-						helpSameAlliance(defense);
+						helpSameAlliance(attack,defense);
 						break;
 					case "Orc":
-						helpSameRace(defense);
+						helpSameRace(attack,defense);
 						break;
 					default:
 						if(WorldMapService.getMap().getCase(x,y).getCaseType() != CaseType.GOBLIN){
@@ -336,16 +337,16 @@ public abstract class Entity extends EntitySuperClass {
 
 		}
 	}
-	public void helpSameRace(Entity entity){
-		if(entity.getPV() > 0 ){
-			int PV_redistribue = (entity.getPV() + this.getPV())/2;
-			entity.setPV(PV_redistribue);
-			this.setPV(PV_redistribue);
+	public void helpSameRace(Entity attack,Entity defense){
+		if(defense.getPV() > 0 ){
+			int PV_redistribue = (defense.getPV() + attack.getPV())/2;
+			defense.setPV(PV_redistribue);
+			attack.setPV(PV_redistribue);
 		}
 		else{
-			int PE_redistribue = (entity.getPE() + this.getPE())/2;
-			entity.setPE(PE_redistribue);
-			this.setPE(PE_redistribue);
+			int PE_redistribue = (defense.getPE() + attack.getPE())/2;
+			defense.setPE(PE_redistribue);
+			attack.setPE(PE_redistribue);
 		}
 	}
 
@@ -379,27 +380,27 @@ public abstract class Entity extends EntitySuperClass {
 	public void setPV(int pV) {
 		PV = pV;
 	}
-	public void helpSameAlliance(Entity entity){
-		if(entity.getPV() > 0 ){
-			int XP_redistribue = (entity.getXP() + this.getXP())/2;
-			entity.setXP(XP_redistribue);
+	public void helpSameAlliance(Entity attack,Entity defense){
+		if(defense.getPV() > 0 ){
+			int XP_redistribue = (defense.getXP() + attack.getXP())/2;
+			defense.setXP(XP_redistribue);
 			this.setXP(XP_redistribue);
 		}
 		else{
-			entity.setPE(1);
-			this.setPE(this.getPE()-1);
+			defense.setPE(1);
+			attack.setPE(attack.getPE()-1);
 		}
 	}
 
 	public void fight(Entity attack,Entity defense){
-        while(attack.getPV() > 0 || defense.getPV() >0 ){
+        while(attack.getPV() > 0 && defense.getPV() >0 ){
             attack.attack(defense);
             defense.getPV();
             defense.attack(attack);
             attack.getPV();
 
         }
-        if(this.getPV() <= 0 ){
+        if(attack.getPV() <= 0 ){
             WorldMapService.getMap().death(attack);
             defense.setXP(defense.getXP() + attack.getXP());
         }
