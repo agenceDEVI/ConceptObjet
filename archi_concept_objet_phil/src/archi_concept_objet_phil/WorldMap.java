@@ -3,6 +3,8 @@ package archi_concept_objet_phil;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.sound.midi.Soundbank;
+
 import Personnages.Elfe;
 import Personnages.Entity;
 import Personnages.Gobelin;
@@ -124,8 +126,6 @@ public class WorldMap {
 	}
 	
 	public void positionnementEntity() {
-		worldMap[0][0].setEntity(new Humain(worldMap[0][0]));
-		entities.add(worldMap[0][0].getEntity());
 		for(int i = 0; i < Rules.worldMap_maxX; i++) {
 			for(int j = 0; j < Rules.worldMap_maxY; j++) {
 				switch (worldMap[i][j].getCaseType()) {
@@ -138,21 +138,21 @@ public class WorldMap {
 					break;
 				case ELVE:
 					if (rand.nextInt(7)==1) {
-						Elfe elfe = new Elfe();
+						Elfe elfe = new Elfe(worldMap[i][j]);
 						worldMap[i][j].setEntity(elfe);
 						entities.add(elfe);
 						}
 					break;
 				case ORC:
 					if (rand.nextInt(8)==1) {
-						Orc orc = new Orc();
+						Orc orc = new Orc(worldMap[i][j]);
 						worldMap[i][j].setEntity(orc);
 						entities.add(orc);
 					}
 					break;
 				case GOBLIN:
 					if (rand.nextInt(3)==1) {
-						Gobelin gobelin = new Gobelin();
+						Gobelin gobelin = new Gobelin(worldMap[i][j]);
 						worldMap[i][j].setEntity(gobelin);
 						entities.add(gobelin);
 					}
@@ -162,22 +162,31 @@ public class WorldMap {
 				}
 			}
 		}
+		worldMap[0][0].setEntity(new Humain(worldMap[0][0]));
+		entities.add(worldMap[0][0].getEntity());
+		worldMap[0][1].setEntity(new Elfe(worldMap[0][1]));
+		entities.add(worldMap[0][0].getEntity());
+		worldMap[1][0].setEntity(new Gobelin(worldMap[1][0]));
+		entities.add(worldMap[0][0].getEntity());
+		worldMap[1][1].setEntity(new Orc(worldMap[1][1]));
+		entities.add(worldMap[0][0].getEntity());
 	}
 	
 	public void death(Entity entity){
-        for(Entity i : entities ){
-            if(i == entity){
+		System.out.println("death : ");
+        for(int i=0; i<entities.size();i++){
+            if(entities.get(i) == entity){
                 entities.remove(i);
-                if(i.getClass().getSimpleName().toString() == "humain"){
+                if(entities.get(i).getClass().getSimpleName().toString() == "humain"){
                     Humain.setNbHumain(Humain.getNbHumain()-1);
                 }
-                if(i.getClass().getSimpleName().toString() == "elfe"){
+                if(entities.get(i).getClass().getSimpleName().toString() == "elfe"){
                     Elfe.setNbElfe(Elfe.getNbElfe()-1);
                 }
-                if(i.getClass().getSimpleName().toString() == "orc"){
+                if(entities.get(i).getClass().getSimpleName().toString() == "orc"){
                     Orc.setNbOrc(Orc.getNbOrc()-1);
                 }
-                if(i.getClass().getSimpleName().toString() == "gobelin"){
+                if(entities.get(i).getClass().getSimpleName().toString() == "gobelin"){
                     Gobelin.setNbGoblelin(Gobelin.getNbGoblelin()-1);
                 }
             }

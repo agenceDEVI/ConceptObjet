@@ -1,15 +1,17 @@
 package Personnages;
 
+import archi_concept_objet_phil.Case;
 import archi_concept_objet_phil.Rules;
 
 public class Gobelin extends Entity {
 
 	private static int nbGoblelin;
 	
-	public Gobelin() {
+	public Gobelin(Case currentCase) {
 		this.PV = Rules.gobelin_PV_Max;
 		this.PE = Rules.gobelin_PE_Max;
 		this.XP = 0;
+		this.currentCase=currentCase;
 		nbGoblelin++;
 	}
 	

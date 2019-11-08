@@ -1,15 +1,17 @@
 package Personnages;
 
+import archi_concept_objet_phil.Case;
 import archi_concept_objet_phil.Rules;
 
 public class Elfe extends Entity {
 
 	private static int nbElfe;
 	
-	public Elfe() {
+	public Elfe(Case currentCase) {
 		this.PV = Rules.elfe_PV_Max;
 		this.PE = Rules.elfe_PE_Max;
 		this.XP = 0;
+		this.currentCase=currentCase;
 		nbElfe++;
 	}
 	

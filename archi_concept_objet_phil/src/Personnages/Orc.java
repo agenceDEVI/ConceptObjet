@@ -1,15 +1,17 @@
 package Personnages;
 
+import archi_concept_objet_phil.Case;
 import archi_concept_objet_phil.Rules;
 
 public class Orc extends Entity {
 
 	private static int nbOrc;
 	
-	public Orc() {
+	public Orc(Case currentCase) {
 		this.PV = Rules.orc_PV_Max;
 		this.PE = Rules.orc_PE_Max;
 		this.XP = 0;
+		this.currentCase=currentCase;
 		nbOrc++;
 	}
 	

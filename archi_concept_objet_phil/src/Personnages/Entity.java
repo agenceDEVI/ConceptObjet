@@ -259,17 +259,14 @@ public abstract class Entity extends EntitySuperClass {
 		}
 	}
 	
-	public void move(int x, int y) {
-		//System.out.println("je bouge");
-		Case nextCase = WorldMapService.getMap().getCase(x, y);
-		nextCase.setEntity(this);
-		currentCase.setEntity(null);
-		this.currentCase = nextCase;
-	}
+
 	
 	public void rencontre(Entity entity,int x, int y){
 		switch (entity.getClass().getSimpleName().toString()) {
 			case "Humain":
+				System.out.println("rencontre humain :");
+				System.out.println(this);
+				System.out.println(entity.toString());
 				if(this.getClass().getSimpleName().toString() == "Humain"){
 					helpSameRace(entity);
 				}
