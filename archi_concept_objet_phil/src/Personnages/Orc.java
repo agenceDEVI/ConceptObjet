@@ -29,7 +29,7 @@ public class Orc extends Entity {
 	 */
 	@Override
 	public String toString() {
-		return " O";
+		return " 👹 ";
 	}
 
 	@Override

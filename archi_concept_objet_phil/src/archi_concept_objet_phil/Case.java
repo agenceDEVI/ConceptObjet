@@ -101,19 +101,19 @@ public class Case {
 			System.out.print(" ⭙ ");
 			break;
 		case ELVE:
-			System.out.print(" ➳ ");
+			System.out.print("  🄴 ");
 			break;
 		case HUMAN:
-			System.out.print(" ⛑ ");
+			System.out.print("  🄷 ");
 			break;
 		case GOBLIN:
-			System.out.print(" ☭ ");
+			System.out.print("  🄶 ");
 			break;
 		case ORC:
-			System.out.print(" ☠  ");
+			System.out.print("  🄾 ");
 			break;
 		case OBSTACLE:
-			System.out.print(" W");
+			System.out.print(" 🅧 ");
 		default:
 			break;
 		}

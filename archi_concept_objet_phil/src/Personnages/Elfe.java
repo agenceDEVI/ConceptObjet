@@ -29,7 +29,7 @@ public class Elfe extends Entity {
 	 */
 	@Override
 	public String toString() {
-		return " E";
+		return " 🧝 ";
 	}
 
 	@Override

@@ -29,7 +29,7 @@ public class Humain extends Entity {
 	 */
 	@Override
 	public String toString() {
-		return " H";
+		return " ⛑ ";
 	}
 	@Override
 	public void attack(Entity entity){

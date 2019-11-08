@@ -43,7 +43,7 @@ public class Gobelin extends Entity {
 	 */
 	@Override
 	public String toString() {
-		return " G";
+		return " 😈 ";
 	}
 
 	@Override

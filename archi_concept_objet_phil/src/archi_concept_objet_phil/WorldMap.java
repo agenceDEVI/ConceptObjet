@@ -130,28 +130,28 @@ public class WorldMap {
 			for(int j = 0; j < Rules.worldMap_maxY; j++) {
 				switch (worldMap[i][j].getCaseType()) {
 				case HUMAN:
-					if (rand.nextInt(8)==2) {
+					if (rand.nextInt(6)==1) {
 						Humain humain = new Humain(worldMap[i][j]);
 						worldMap[i][j].setEntity(humain);
 						entities.add(humain);
 					}
 					break;
 				case ELVE:
-					if (rand.nextInt(8)==3) {
+					if (rand.nextInt(7)==1) {
 						Elfe elfe = new Elfe();
 						worldMap[i][j].setEntity(elfe);
 						entities.add(elfe);
 						}
 					break;
 				case ORC:
-					if (rand.nextInt(8)==4) {
+					if (rand.nextInt(8)==1) {
 						Orc orc = new Orc();
 						worldMap[i][j].setEntity(orc);
 						entities.add(orc);
 					}
 					break;
 				case GOBLIN:
-					if (rand.nextInt(8)==5) {
+					if (rand.nextInt(3)==1) {
 						Gobelin gobelin = new Gobelin();
 						worldMap[i][j].setEntity(gobelin);
 						entities.add(gobelin);
