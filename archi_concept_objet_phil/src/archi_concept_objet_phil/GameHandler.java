@@ -1,5 +1,7 @@
 package archi_concept_objet_phil;
 
+import java.util.Random;
+
 import Personnages.Gobelin;
 import Personnages.Humain;
 import Personnages.Orc;

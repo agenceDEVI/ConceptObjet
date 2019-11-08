@@ -35,6 +35,18 @@ public class Humain extends Entity {
         int damage = this.XP;
         entity.setPV(entity.getPV() - damage);
     }
+	/**
+	 * @return the nbHumain
+	 */
+	public static int getNbHumain() {
+		return nbHumain;
+	}
+	/**
+	 * @param nbHumain the nbHumain to set
+	 */
+	public static void setNbHumain(int nbHumain) {
+		Humain.nbHumain = nbHumain;
+	}
 	
 	
 	

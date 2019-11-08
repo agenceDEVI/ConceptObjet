@@ -39,4 +39,18 @@ public class Orc extends Entity {
         entity.setPV(entity.getPV() - damage);
     }
 
+	/**
+	 * @return the nbOrc
+	 */
+	public static int getNbOrc() {
+		return nbOrc;
+	}
+
+	/**
+	 * @param nbOrc the nbOrc to set
+	 */
+	public static void setNbOrc(int nbOrc) {
+		Orc.nbOrc = nbOrc;
+	}
+
 }

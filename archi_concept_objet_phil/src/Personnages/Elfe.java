@@ -39,4 +39,18 @@ public class Elfe extends Entity {
         entity.setPV(entity.getPV() - damage);
     }
 
+	/**
+	 * @return the nbElfe
+	 */
+	public static int getNbElfe() {
+		return nbElfe;
+	}
+
+	/**
+	 * @param nbElfe the nbElfe to set
+	 */
+	public static void setNbElfe(int nbElfe) {
+		Elfe.nbElfe = nbElfe;
+	}
+
 }

@@ -46,38 +46,132 @@ public abstract class Entity {
 		return alliance;
 	}
 	
+	public Direction humanCorner() {
+		switch (rand.nextInt(3)) {
+		case 0: return Direction.BAS;
+		case 1: return Direction.BASDROITE;
+		case 2: return Direction.DROITE;
+		default: return null;
+		}
+	}
+	
+	public Direction elveCorner() {
+		switch (rand.nextInt(3)) {
+		case 0: return Direction.GAUCHE;
+		case 1: return Direction.BASGAUCHE;
+		case 2: return Direction.BAS;
+		default: return null;
+		}
+	}
+	
+	public Direction goblinCorner() {
+		switch (rand.nextInt(3)) {
+		case 0: return Direction.GAUCHE;
+		case 1: return Direction.HAUTGAUCHE;
+		case 2: return Direction.HAUT;
+		default: return null;
+		}
+	}
+	
+	public Direction orcCorner() {
+		switch (rand.nextInt(3)) {
+		case 0: return Direction.HAUT;
+		case 1: return Direction.HAUTDROITE;
+		case 2: return Direction.DROITE;
+		default: return null;
+		}
+	}
+	
+	public Direction northLimit() {
+		switch (rand.nextInt(5)) {
+		case 0: return Direction.GAUCHE;
+		case 1: return Direction.BASGAUCHE;
+		case 2: return Direction.BAS;
+		case 3: return Direction.BASDROITE;
+		case 4: return Direction.DROITE;
+		default: return null;
+		}
+	}
+	
+	public Direction southLimit() {
+		switch (rand.nextInt(5)) {
+		case 0: return Direction.GAUCHE;
+		case 1: return Direction.HAUTGAUCHE;
+		case 2: return Direction.HAUT;
+		case 3: return Direction.HAUTDROITE;
+		case 4: return Direction.DROITE;
+		default: return null;
+		}
+	}
+	
+	public Direction westLimit() {
+		switch (rand.nextInt(5)) {
+		case 0: return Direction.HAUT;
+		case 1: return Direction.HAUTDROITE;
+		case 2: return Direction.DROITE;
+		case 3: return Direction.BASDROITE;
+		case 4: return Direction.BAS;
+		default: return null;
+		}
+	}
+	
+	public Direction eastLimit() {
+		switch (rand.nextInt(5)) {
+		case 0: return Direction.HAUT;
+		case 1: return Direction.HAUTGAUCHE;
+		case 2: return Direction.GAUCHE;
+		case 3: return Direction.BASGAUCHE;
+		case 4: return Direction.BAS;
+		default: return null;
+		}
+	}
+	
+	public Direction center() {
+		switch (rand.nextInt(8)) {
+		case 0: return Direction.HAUT;
+		case 1: return Direction.HAUTGAUCHE;
+		case 2: return Direction.GAUCHE;
+		case 3: return Direction.BASGAUCHE;
+		case 4: return Direction.BAS;
+		case 5: return Direction.BASDROITE;
+		case 6: return Direction.DROITE;
+		case 7: return Direction.HAUTDROITE;
+		default: return null;
+		}
+	}
+	
 	public void chooseDirection() {
 		if(currentCase.getX()==0) {
 			if (currentCase.getY()==0) {
-				
+				humanCorner();
 			}
 			else if (currentCase.getY()==Rules.worldMap_maxY) {
-				
+				orcCorner();
 			}
 			else {
-				
+				westLimit();
 			}
 		}
 		else if (currentCase.getX()==Rules.worldMap_maxX) {
 			if (currentCase.getY()==0) {
-				
+				elveCorner();
 			}
 			else if (currentCase.getY()==Rules.worldMap_maxY) {
-				
+				goblinCorner();
 			}
 			else {
-				
+				eastLimit();
 			}
 		}
 		else {
 			if (currentCase.getY()==0) {
-				
+				northLimit();
 			}
 			else if (currentCase.getY()==Rules.worldMap_maxY) {
-				
+				southLimit();
 			}
 			else {
-				
+				center();
 			}
 		}
 	}

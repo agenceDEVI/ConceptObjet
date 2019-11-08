@@ -31,6 +31,13 @@ public class Gobelin extends Entity {
 		return nbGoblelin;
 	}
 	
+	/**
+	 * @param nbGoblelin the nbGoblelin to set
+	 */
+	public static void setNbGoblelin(int nbGoblelin) {
+		Gobelin.nbGoblelin = nbGoblelin;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

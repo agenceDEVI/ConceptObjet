@@ -119,6 +119,7 @@ public class WorldMap {
 					if (rand.nextInt(8)==2) {
 						Humain humain = new Humain();
 						worldMap[i][j].setEntity(humain);
+						System.out.println(worldMap[i][j].getEntity().toString());
 						entities.add(humain);
 					}
 					break;
@@ -151,11 +152,23 @@ public class WorldMap {
 	}
 	
 	public void death(Entity entity){
-		for(Entity i : entities ){
-			if(i == entity){
-				entities.remove(i);
-			}
-		}
-	}
+        for(Entity i : entities ){
+            if(i == entity){
+                entities.remove(i);
+                if(i.getClass().getSimpleName().toString() == "humain"){
+                    Humain.setNbHumain(Humain.getNbHumain()-1);
+                }
+                if(i.getClass().getSimpleName().toString() == "elfe"){
+                    Elfe.setNbElfe(Elfe.getNbElfe()-1);
+                }
+                if(i.getClass().getSimpleName().toString() == "orc"){
+                    Orc.setNbOrc(Orc.getNbOrc()-1);
+                }
+                if(i.getClass().getSimpleName().toString() == "gobelin"){
+                    Gobelin.setNbGoblelin(Gobelin.getNbGoblelin()-1);
+                }
+            }
+        }
+    }
 	
 }
