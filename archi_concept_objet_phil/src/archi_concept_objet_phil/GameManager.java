@@ -16,6 +16,13 @@ public class GameManager {
 	
 	public void deroulementPartie() {//throws InterruptedException{
 		worldMap.positionnementEntity();
+		System.out.println("La simulation démarre avec le nombre d'entité suivant: "+worldMap.getNbEntities());
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int compteurTour = 0;
 		while( Humain.getNbHumain()+Elfe.getNbElfe() > 0 && Orc.getNbOrc()+Gobelin.getNbGoblelin() > 0 && compteurTour <10000 ){
 			System.out.println(worldMap.getNbEntities());
@@ -46,6 +53,7 @@ public class GameManager {
 				e.printStackTrace();
 			}*/
 		}
+		WorldMapService.getMap().displayWorldMap();
 		if(Humain.getNbHumain()+Elfe.getNbElfe() <= 0){
 			System.out.println("Les méchants Win");
 		}

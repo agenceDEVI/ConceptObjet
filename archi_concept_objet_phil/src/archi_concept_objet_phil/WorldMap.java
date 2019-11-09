@@ -85,7 +85,7 @@ public class WorldMap {
 	} 
 	
 	public boolean checkingCase(int a, int b) {
-		System.out.println("a="+a+" b="+b);
+		//System.out.println("a="+a+" b="+b);
 		if(this.getCase(b, a).getCaseType()==CaseType.OBSTACLE) {
 			return false;
 		}
@@ -212,10 +212,10 @@ public class WorldMap {
     }
 	
 	public void move(int previousX, int previousY, int nextX, int nextY) {
-		System.out.println("je bouge");
+		//System.out.println("je bouge");
 		worldMap[nextX][nextY].setEntity(worldMap[previousX][previousY].getEntity());
 		worldMap[nextX][nextY].getEntity().setCurrentCase(worldMap[nextX][nextY]);
-		System.out.println("Je suis dans move"+worldMap[previousX][previousY].getEntity()+" //// "+worldMap[nextX][nextY].getEntity());
+		//System.out.println("Je suis dans move"+worldMap[previousX][previousY].getEntity()+" //// "+worldMap[nextX][nextY].getEntity());
 		worldMap[previousX][previousY].setEntity(null);
 		/*System.out.println("je test maintenant"+worldMap[previousX][previousY].getEntity()+" //// "+worldMap[nextX][nextY].getEntity());
 		System.out.println(previousX+"test"+previousY+"test"+nextX+"test"+nextY);
