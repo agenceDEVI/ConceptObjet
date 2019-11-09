@@ -12,7 +12,7 @@ public abstract class Entity extends EntitySuperClass {
 	
 	protected int PE;
 	protected int PV;
-	protected int XP;
+	protected int XP=1;
 	protected Case currentCase;
 	protected String race;
 	protected static int nbrPopulationAlliance;
@@ -411,13 +411,11 @@ public abstract class Entity extends EntitySuperClass {
 
         }
         if(attack.getPV() <= 0 ){
-        	System.out.println("death ===============================");
             WorldMapService.getMap().death(attack);
             defense.setXP(defense.getXP() + attack.getXP());
             WorldMapService.getMap().setNbEntities(WorldMapService.getMap().getNbEntities()-1);;
         }
         else{
-        	System.out.println("death +++++++++++++++++++++++++++++++++");
             WorldMapService.getMap().death(defense);
             defense.setXP(defense.getXP() + attack.getXP());
             WorldMapService.getMap().setNbEntities(WorldMapService.getMap().getNbEntities()-1);;

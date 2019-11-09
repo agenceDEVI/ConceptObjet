@@ -11,10 +11,10 @@ public class Rules {
 	public static final int orc_PV_Max = 60;
 	public static final int gobelin_PV_Max = 30;
 	
-	public static final int humain_PE_Max = 200;
-	public static final int elfe_PE_Max = 250;
-	public static final int orc_PE_Max = 160;
-	public static final int gobelin_PE_Max = 230;	
+	public static final int humain_PE_Max = 400;
+	public static final int elfe_PE_Max = 500;
+	public static final int orc_PE_Max = 320;
+	public static final int gobelin_PE_Max = 460;	
 	
 	public static final int humain_XP_Start = 4;
 	public static final int elfe_XP_Start = 6;
