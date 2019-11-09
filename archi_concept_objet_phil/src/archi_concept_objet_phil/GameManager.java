@@ -46,10 +46,10 @@ public class GameManager {
 				e.printStackTrace();
 			}*/
 		}
-		if(Humain.getNbHumain()+Elfe.getNbElfe() < 0){
+		if(Humain.getNbHumain()+Elfe.getNbElfe() <= 0){
 			System.out.println("Les méchants Win");
 		}
-		else if(Orc.getNbOrc()+Gobelin.getNbGoblelin() < 0){
+		else if(Orc.getNbOrc()+Gobelin.getNbGoblelin() <= 0){
 			System.out.println("Les gentils Win");
 		}
 		else{
