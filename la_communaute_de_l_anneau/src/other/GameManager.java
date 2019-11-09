@@ -37,7 +37,7 @@ public class GameManager {
 					WorldMapService.getMap().displayWorldMap();
 					worldMap.getEntities().get(i).chooseDirection();
 					compteurTour++;
-					System.out.println("nouveau tour"+compteurTour);
+					System.out.println("nouveau tour : "+compteurTour);
 					/*try {
 						TimeUnit.MICROSECONDS.sleep(500);
 					} catch (InterruptedException e) {
