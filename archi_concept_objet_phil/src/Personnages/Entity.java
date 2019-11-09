@@ -12,7 +12,7 @@ public abstract class Entity extends EntitySuperClass {
 	
 	protected int PE;
 	protected int PV;
-	protected int XP=1;
+	protected int XP;
 	protected Case currentCase;
 	protected String race;
 	protected static int nbrPopulationAlliance;
